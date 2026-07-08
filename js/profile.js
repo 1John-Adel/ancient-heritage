@@ -81,7 +81,6 @@ else {
         document.querySelector(".fav").appendChild(card)
     }
 }
-    let main = document.querySelector("main");
     function homeMod() {
         document.querySelector(".userName").classList.toggle("light");
         document.querySelector(".userEmail").classList.toggle("light");

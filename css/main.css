@@ -65,7 +65,7 @@ body {
         height: 30px;
         fill: #F2CA50;
         cursor: pointer;
-        transition: 0.3s;
+        transition: 0.5s;
     }
 
     svg:hover {
@@ -84,8 +84,8 @@ body {
 }
 
 #nav-bar nav {
-    background-color: #131313b9;
-    backdrop-filter: blur(20px);
+    background-color: #1313138d;
+    backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(20px);
     border-radius: 100px;
     width: 85%;
