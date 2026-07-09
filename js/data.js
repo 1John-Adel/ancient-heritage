@@ -586,6 +586,22 @@ const sounds = {
     "nmec": new Audio("../assets/audios/nmec.mp3"),
 };
 
+const locations = [
+    { id: "pyramid", name: "The Great Pyramid", coords: [31.13414197593711, 29.98025663072421] },
+    { id: "gem", name: "Grand Egyptian Museum", coords: [31.124382973158742, 29.993557602550066] },
+    { id: "coptic", name: "Coptic Museum", coords: [31.23036500923982, 30.0062] },
+    { id: "egyptian", name: "The Egyptian Museum", coords: [31.252769526434466, 30.00592242019631] },
+    { id: "islamic", name: "The Islamic Arts Museum", coords: [31.2519, 30.044741372972027] },
+    { id: "nmec", name: "NMEC", coords: [31.24820710923998, 30.008676490664424] },
+    { id: "siwa", name: "Siwa Oasis", coords: [25.51911200952857, 29.204308794881353] },
+    { id: "dakhla", name: "Dakhla Oasis", coords: [29.1257595075955, 25.51894913850731] },
+    { id: "kharga", name: "Kharga Oasis", coords: [30.558125463654797, 25.4392918457923] },
+    { id: "karnak", name: "El Karnak", coords: [32.65767799133573, 25.718940903083553] },
+    { id: "simbel", name: "Abu Simbel", coords: [31.625959927998306, 22.337410507506604] },
+    { id: "baharya", name: "Baharya Oasis", coords: [28.90835030357991, 28.384786560697552] },
+    { id: "farafra", name: "Farafra Oasis", coords: [27.97074807480394, 27.056803926113123] }
+];
+
 const monumentsData = {
     "pyramid": {
         areaTag: `<area target="_blank" alt="" title="" href="https://en.wikipedia.org/wiki/Great_Pyramid_of_Giza" coords="40,309,250,54,503,308" shape="poly">`,
@@ -595,7 +611,8 @@ const monumentsData = {
             { label: "PHARAOH", value: "khufu" },
             { label: "STATE", value: "Preserved" }
         ],
-        desc: "The oldest and largest of the three pyramids in the Giza pyramid complex, this architectural marvel remained the tallest man-made structure in the world for over 3,800 years."
+        desc: "The oldest and largest of the three pyramids in the Giza pyramid complex, this architectural marvel remained the tallest man-made structure in the world for over 3,800 years.",
+        link: "https://maps.app.goo.gl/2xesTcCxsQEgV5Sw7"
     },
     "siwa": {
         areaTag: `<area target="_blank" alt="" title="" href="https://en.wikipedia.org/wiki/Siwa_Oasis" coords="1,133,80,163,106,230,130,259,190,223,220,273,360,281,365,255,403,292,514,300,528,272,559,309,615,297,676,305,749,336,798,406,857,420,860,399,878,399,886,422,1046,450,1083,445,1083,451,1099,449,1097,436,1116,428,1118,441,1277,411,1278,692,424,716,487,852,-1,848" shape="poly">`,
@@ -606,6 +623,7 @@ const monumentsData = {
             { label: "STATE", value: "UNESCO Heritage" }
         ],
         desc: "One of Egypt's most isolated settlements, Siwa is a natural paradise famous for its unique Berber culture and the historic Shali Fortress, where the Oracle of Amun once stood."
+        , link: "https://maps.app.goo.gl/cSTQKADsUBmvcRK46"
     },
     "baharya": {
         areaTag: `<area target="_blank" alt="" title="" href="https://en.wikipedia.org/wiki/Bahariya_Oasis" coords="-1,178,121,177,102,136,166,123,174,135,198,100,222,126,204,158,222,184,671,180,674,389,1,388" shape="poly">`,
@@ -616,6 +634,7 @@ const monumentsData = {
             { label: "STATE", value: "Archeological Site" }
         ],
         desc: "Known as the \"Northern Oasis,\" Bahariya is a lush depression surrounded by black hills. It gained worldwide fame with the discovery of the Valley of the Golden Mummies and serves as the main gateway to the stunning Black and White Deserts."
+        ,link: "https://maps.app.goo.gl/pDDdVhqSwocngyGz7"
     },
     "farafra": {
         areaTag: `<area target="_blank" alt="" title="" href="https://en.wikipedia.org/wiki/Farafra,_Egypt" coords="46,248,57,214,54,141,62,131,62,54,122,27,126,9,147,7,148,20,182,31,202,23,223,33,236,52,250,72,259,89,252,123,222,157,213,191,222,220,262,247,516,375,502,389,2,389,-1,272" shape="poly">`,
@@ -626,6 +645,7 @@ const monumentsData = {
             { label: "STATE", value: "Natural Protectorate" }
         ],
         desc: "A tranquil oasis known for its traditional mud-brick architecture, Farafra is the closest point to the world-renowned White Desert National Park, famous for its surreal chalk-white rock formations shaped by centuries of wind erosion."
+        ,link: "https://maps.app.goo.gl/Wj4BbApFMfXwsPhF9"
     },
     "dakhla": {
         areaTag: `<area target="_blank" alt="" title="" href="https://en.wikipedia.org/wiki/Dakhla_Oasis" coords="-1,100,673,390" shape="rect">`,
@@ -636,6 +656,7 @@ const monumentsData = {
             { label: "STATE", value: "Archeological Site" }
         ],
         desc: "Considered one of the most beautiful oases in Egypt, Dakhla is home to the stunning medieval Islamic village of Al-Qasr. It has been continuously inhabited since prehistoric times and features remarkable Roman temples and mud-brick fortresses."
+        ,link: "https://maps.app.goo.gl/Wz2QTveFzcTcbxYn6"
     },
     "kharga": {
         areaTag: `<area target="_blank" alt="" title="" href="https://en.wikipedia.org/wiki/Kharga_Oasis" coords="1,412,208,404,217,255,206,237,209,226,214,220,217,187,208,180,398,111,617,201,617,242,735,224,934,323,936,377,960,373,960,514,548,542,111,494,0,505" shape="poly">`,
@@ -646,6 +667,7 @@ const monumentsData = {
             { label: "STATE", value: "Archeological Site" }
         ],
         desc: "The capital of the New Valley, Kharga was a vital stop on the ancient \"Forty Days Road\" trade route. It is home to the Temple of Hibis, the best-preserved Persian-era temple in Egypt, and the Necropolis of Al-Bagawat, one of the world's oldest Christian cemeteries."
+        ,link: "https://maps.app.goo.gl/n1v4a3ZHezJzmiFX8"
     },
     "simbel": {
         areaTag: `<area target="_blank" alt="" title="" href="https://en.wikipedia.org/wiki/Abu_Simbel" coords="-1,242,0,157,59,117,74,92,293,75,318,40,335,34,365,11,404,0,499,1,499,244,188,225,51,232" shape="poly">`,
@@ -656,6 +678,7 @@ const monumentsData = {
             { label: "STATE", value: "UNESCO Heritage" }
         ],
         desc: "Built by Ramses II, these massive rock-cut temples are a marvel of ancient engineering, famous for the solar alignment phenomenon and their miraculous relocation by UNESCO."
+        ,link: "https://maps.app.goo.gl/3zCiUAf3ABj6s1ns8"
     },
     "karnak": {
         areaTag: `<area target="_blank" alt="" title="" href="https://en.wikipedia.org/wiki/Karnak" coords="-1,272,107,268,110,250,135,242,144,241,144,218,157,153,190,149,192,133,214,125,214,116,224,114,238,104,301,94,300,81,361,73,374,86,422,80,447,90,448,101,479,108,490,143,514,137,514,117,524,118,522,92,539,90,543,49,576,44,581,30,605,36,617,19,635,18,674,10,673,390,0,390" shape="poly">`,
@@ -666,6 +689,7 @@ const monumentsData = {
             { label: "STATE", value: "UNESCO Heritage" }
         ],
         desc: "The largest religious complex ever built, Karnak is a vast open-air museum featuring the magnificent Great Hypostyle Hall and its 134 massive sandstone columns."
+        ,link: "https://maps.app.goo.gl/yqdBQKYaeS1v62v68"
     },
     "gem": {
         areaTag: `<area target="_blank" alt="" title="" href="https://en.wikipedia.org/wiki/Grand_Egyptian_Museum" coords="157,-1,431,418,468,457,894,512,894,868,1,867,0,-1" shape="poly">`,
@@ -676,6 +700,7 @@ const monumentsData = {
             { label: "STATE", value: "World's Largest" }
         ],
         desc: "The world's largest archaeological museum dedicated to a single civilization. Located on the Giza plateau, it houses over 100,000 artifacts including the complete Tutankhamun collection."
+        ,link: "https://maps.app.goo.gl/e91d9EaAaVeULaFH6"
     },
     "coptic": {
         areaTag: `<area target="_blank" alt="" title="" href="https://en.wikipedia.org/wiki/Coptic_Museum" coords="1,219,91,218,92,209,110,211,110,195,104,186,106,143,115,151,126,154,131,144,137,149,134,154,141,154,148,153,156,145,168,155,182,145,195,154,207,145,219,155,233,143,242,152,252,140,259,128,267,121,274,117,282,112,289,109,299,105,306,95,314,96,316,105,331,109,339,114,346,119,354,125,358,130,362,134,367,141,371,147,377,152,382,144,396,154,408,143,422,153,432,144,447,153,456,143,471,153,483,143,497,153,509,142,513,181,504,194,506,210,524,210,524,218,696,217,698,183,709,182,715,169,709,182,736,159,736,662,645,660,599,658,384,655,380,661,340,660,325,656,171,657,146,659,125,658,84,661,60,662,-1,664" shape="poly">`,
@@ -686,6 +711,7 @@ const monumentsData = {
             { label: "STATE", value: "Largest Coptic Collection" }
         ],
         desc: "Located within the fortress of Babylon in Old Cairo, this museum holds the largest collection of Egyptian Christian artifacts in the world, beautifully showcasing the fusion of Pharaonic, Graeco-Roman, and Islamic art."
+        ,link: "https://maps.app.goo.gl/CdHb3vsbxuZbx6917"
     },
     "egyptian": {
         areaTag: `<area target="_blank" alt="" title="" href="https://en.wikipedia.org/wiki/Egyptian_Museum" coords="41,248,40,229,44,224,49,220,48,174,44,168,48,162,46,131,40,124,46,122,47,115,74,111,110,104,102,81,113,68,115,59,120,57,127,63,126,69,161,67,162,59,235,50,280,60,280,68,314,74,317,66,322,63,328,66,332,76,393,83,402,69,414,56,425,47,441,38,461,33,482,33,499,37,516,45,526,52,536,60,547,74,551,84,736,58,735,490,658,490" shape="poly">`,
@@ -696,6 +722,7 @@ const monumentsData = {
             { label: "STATE", value: "Historic Monument" }
         ],
         desc: "The historic neoclassic palace in Tahrir Square houses the world's oldest and most extensive collection of pharaonic antiquities, serving as the quintessential guardian of ancient Egyptian history for over a century."
+        ,link: "https://maps.app.goo.gl/km6qGvHjB4eg1wBK7"
     },
     "islamic": {
         areaTag: `<area target="_blank" alt="" title="" href="https://en.wikipedia.org/wiki/Museum_of_Islamic_Art,_Cairo" coords="939,2,1675,459,2050,179,2700,740,2709,807,2690,825,2733,1142,3181,1425,3191,1473,3178,1489,3282,2058,0,2123,-3,1" shape="poly">`,
@@ -706,6 +733,7 @@ const monumentsData = {
             { label: "STATE", value: "World-Renowned" }
         ],
         desc: "Considered one of the greatest in the world, this museum displays an exceptional collection of rare Islamic artifacts, woodwork, plaster, ceramics, glass, and textiles from all periods of the Islamic world."
+        ,link: "https://maps.app.goo.gl/XndfxfFd5ofTUWrb6"
     },
     "nmec": {
         areaTag: `<area target="_blank" alt="" title="" href="https://en.wikipedia.org/wiki/National_Museum_of_Egyptian_Civilization" coords="0,475,91,460,189,466,191,441,215,437,214,420,223,420,226,436,273,428,274,325,300,319,316,321,467,181,614,314,659,316,662,463,754,453,759,432,766,432,772,452,943,466,947,447,955,447,959,466,974,468,974,487,984,489,984,521,1119,507,1119,823,912,820,912,803,897,801,886,796,836,744,789,742,733,795,728,800,710,801,710,815,661,810,640,773,619,764,577,763,576,809,297,800,-1,783" shape="poly">`,
@@ -716,51 +744,8 @@ const monumentsData = {
             { label: "STATE", value: "Modern Comprehensive" }
         ],
         desc: "The first museum in the Arab world focusing on the entirety of Egyptian civilization from prehistoric times to the modern day, famously housing the majestic Royal Mummies in a specially designed subterranean hall."
+        ,link: "https://maps.app.goo.gl/ZL35CCMiwLqahrEs8"
     }
 };
-
-function selected(id, name) {
-    let infoCnt = document.getElementById("information-container");
-    let img = document.getElementById('img');
-    let p1 = infoCnt.querySelector('#p1');
-    let map = infoCnt.querySelector('map[name="image-map"]');
-    let info = infoCnt.querySelector('#selected-info');
-    let infoP = infoCnt.querySelector('#info-p');
-
-    img.src = "../assets/images/Map-imgs/" + id + ".jpg";
-    p1.innerText = name;
-    current = id;
-
-    const item = monumentsData[id];
-
-    map.innerHTML = item.areaTag;
-
-    info.innerHTML = item.stats.map(stat => `
-            <section>
-                <label>${stat.label}</label>
-                <p>${stat.value}</p>
-            </section>
-        `).join('');
-
-    infoP.innerText = item.desc;
-
-
-    let p = document.querySelectorAll("#icons-container img");
-    p.forEach(e => {
-        if (e.id !== id) {
-            e.classList.remove("active");
-        } else {
-            e.classList.toggle("active");
-        }
-    });
-
-    setTimeout(() => {
-        sounds[id].play();
-    }, 300);
-
-    $(document).ready(function () {
-        $('img[usemap]').rwdImageMaps();
-    });
-}
 
 // map.on('click', (e) => { const features = map.queryRenderedFeatures(e.point); if (features.length > 0) { console.log("اسم الطبقة المسؤولية:", features[0].layer.id); console.log("الـ source-layer بتاعها:", features[0].layer['source-layer']); } });

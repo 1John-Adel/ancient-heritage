@@ -174,64 +174,43 @@
     justify-content: space-between;
     flex-wrap: wrap;
     padding: 0 75px;
+
+    div {
+        width: fit-content;
+        cursor: pointer;
+
+        section {
+            display: flex;
+            font-size: 28px;
+            font-family: 'Playfair Display';
+            font-weight: 500;
+            font-style: normal;
+            color: #E5E2E1;
+        }
+    }
 }
 
-#egyptian-museum {
-    width: fit-content;
-    height: fit-content;
-    cursor: pointer;
+#egyptian {
 
     img {
         width: 550px;
     }
-
-    section {
-        display: flex;
-        font-size: 28px;
-        font-family: 'Playfair Display';
-        font-weight: 500;
-        font-style: normal;
-        color: #E5E2E1;
-    }
 }
 
-#islamic-museum {
-    width: fit-content;
-    cursor: pointer;
+#islamic {
     margin-top: 60px;
 
     img {
         width: 450px;
     }
-
-    section {
-        display: flex;
-        font-size: 28px;
-        font-family: 'Playfair Display';
-        font-weight: 500;
-        font-style: normal;
-        color: #E5E2E1;
-    }
 }
 
-#grand-museum {
-    width: fit-content;
-    height: fit-content;
-    cursor: pointer;
+#gem {
     margin-top: -270px;
     margin-left: 30px;
 
     img {
         width: 500px;
-    }
-
-    section {
-        display: flex;
-        font-size: 28px;
-        font-family: 'Playfair Display';
-        font-weight: 500;
-        font-style: normal;
-        color: #E5E2E1;
     }
 }
 
@@ -337,12 +316,12 @@
         text-transform: uppercase;
         letter-spacing: 3px;
     }
-    
+
     h1 {
         font-size: 64px;
         color: #E5E2E1;
     }
-    
+
     h3 {
         font-family: 'Playfair Display';
         color: #F2CA50CC;
@@ -350,7 +329,7 @@
         font-weight: 400;
         font-size: 28px;
     }
-    
+
     p {
         color: #D0C5AF;
         font-family: 'Montserrat';
@@ -360,7 +339,7 @@
         width: 40%;
         text-align: center;
     }
-    
+
     a {
         text-decoration: none;
         color: #F2CA50;

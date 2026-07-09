@@ -115,8 +115,29 @@ main {
         filter: drop-shadow(0 4px 8px #00000073);
         transition: 0.5s;
     }
+}
 
-    svg:hover {
+.custom-marker:hover {
+    z-index: 1;
+
+    svg {
+        transform: translateY(-6px) scale(1.1);
+        filter: drop-shadow(0 0 8px #f2ca5080) drop-shadow(0 6px 12px #00000073);
+    }
+}
+
+.custom-marker.active {
+    z-index: 1;
+
+    .pin-name {
+        opacity: 1 !important;
+
+        p {
+            font-size: 12px !important;
+        }
+    }
+
+    svg {
         transform: translateY(-6px) scale(1.1);
         filter:
             drop-shadow(0 0 8px #f2ca5080) drop-shadow(0 6px 12px #00000073);
@@ -141,7 +162,8 @@ main {
     border-radius: 20px;
     overflow: hidden;
     cursor: grab;
-    transform: translate(1600px, 0px); /* لأن الدالة تجمع 120 + Y أي: 120 + -120 = 0 */
+    transform: translate(1600px, 0px);
+    /* لأن الدالة تجمع 120 + Y أي: 120 + -120 = 0 */
 
     #info-top {
         display: flex;
@@ -279,7 +301,8 @@ main {
     border-radius: 10px;
     pointer-events: none;
     z-index: 10;
-    transform: translate(1585px, 100px); /* بناءً على الحسبة: X + offsetWidth - 15 و 220 + Y */
+    transform: translate(1585px, 100px);
+    /* بناءً على الحسبة: X + offsetWidth - 15 و 220 + Y */
 }
 
 #scroll-thumb {

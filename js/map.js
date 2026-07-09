@@ -1,9 +1,8 @@
-// 1. تعريف عناصر الواجهة الأصلية والصحيحة
 const myWindow = document.getElementById("information-container");
 const scrollBar = document.getElementById("custom-scrollbar");
 const scrollThumb = document.getElementById("scroll-thumb");
 
-// 2. المتغيرات الخاصة بحالة الخريطة والنافذة
+let current = null;
 let activeLocationName = null;
 let previousCenter = null;
 let previousZoom = null;
@@ -21,21 +20,22 @@ let totalY = currentY;
 let scrollY = 0;
 const frameHeight = 500;
 
-// 3. دالة تحديث موضع النافذة والـ Scrollbar (تم تنظيفها لتعتمد على الموضع الافتراضي للـ CSS)
-function updateWindowPosition(X = 1600, Y = -120) {
+function updateWindowPosition(X = 1600, Y = -120, triggerTransition = true) {
     if (!myWindow) return { targetX: X, targetY: Y };
 
-    // إذا رجعت للموضع الافتراضي عبر استدعاء الدالة، ضيف الترانزيشن الناعم
-    if (X === 1600 && Y === -120) {
+    if (triggerTransition) {
         myWindow.style.transition = "transform 0.5s ease-out";
         if (scrollBar) scrollBar.style.transition = "transform 0.5s ease-out";
-        
+
         setTimeout(() => {
             if (!isDragging) {
                 myWindow.style.transition = "none";
                 if (scrollBar) scrollBar.style.transition = "none";
             }
         }, 500);
+    } else {
+        myWindow.style.transition = "none";
+        if (scrollBar) scrollBar.style.transition = "none";
     }
 
     const targetX = X;
@@ -65,16 +65,15 @@ function updateWindowPosition(X = 1600, Y = -120) {
     return { targetX, targetY };
 }
 
-// 4. استدعاء إضافة اللغة العربية قبل إنشاء الخريطة
 maplibregl.setRTLTextPlugin(
     'https://unpkg.com/@mapbox/mapbox-gl-rtl-text@0.2.3/mapbox-gl-rtl-text.js',
     lazyLoadError => { if (lazyLoadError) console.error(lazyLoadError); },
-    true 
+    true
 );
 
 const egyptBounds = [
-    [24.7, 21.96], 
-    [37.0, 32.5]  
+    [24.7, 21.96],
+    [37.0, 32.5]
 ];
 
 const map = new maplibregl.Map({
@@ -84,7 +83,7 @@ const map = new maplibregl.Map({
     zoom: 6,
     maxZoom: 15,
     maxBounds: egyptBounds,
-    scrollZoom: false, 
+    scrollZoom: false,
     touchZoomRotate: true,
     dragPan: true,
     attributionControl: false
@@ -128,24 +127,9 @@ document.getElementById('map').addEventListener('wheel', (e) => {
 
 }, { passive: false });
 
-// 5. مصفوفة الأماكن وإحداثياتها
-const locations = [
-    { id: "pyramid", name: "The Great Pyramid", coords: [31.13414197593711, 29.98025663072421] },
-    { id: "gem", name: "Grand Egyptian Museum", coords: [31.124382973158742, 29.993557602550066] },
-    { id: "coptic", name: "Coptic Museum", coords: [31.23036500923982, 30.0062] },
-    { id: "egyptian", name: "The Egyptian Museum", coords: [31.252769526434466, 30.00592242019631] },
-    { id: "islamic", name: "The Islamic Arts Museum", coords: [31.2519, 30.044741372972027] },
-    { id: "nmec", name: "NMEC", coords: [31.24820710923998, 30.008676490664424] },
-    { id: "siwa", name: "Siwa Oasis", coords: [25.51911200952857, 29.204308794881353] },
-    { id: "dakhla", name: "Dakhla Oasis", coords: [29.1257595075955, 25.51894913850731] },
-    { id: "kharga", name: "Kharga Oasis", coords: [30.558125463654797, 25.4392918457923] },
-    { id: "karnak", name: "El Karnak", coords: [32.65767799133573, 25.718940903083553] },
-    { id: "simbel", name: "Abu Simbel", coords: [31.625959927998306, 22.337410507506604] },
-    { id: "baharya", name: "Baharya Oasis", coords: [28.90835030357991, 28.384786560697552] },
-    { id: "farafra", name: "Farafra Oasis", coords: [27.97074807480394, 27.056803926113123] }
-];
-
 function handleMarkerClick(loc) {
+    document.getElementById('close').removeAttribute('class');
+    document.getElementById('ext-window').removeAttribute('class');
     if (!activeLocationName) {
         previousCenter = map.getCenter();
         previousZoom = map.getZoom();
@@ -167,14 +151,111 @@ function handleMarkerClick(loc) {
         map.dragPan.enable();
         map.boxZoom.enable();
     }, 2000);
+
+    document.getElementById('close').classList.add(loc.id, loc.name.replaceAll(' ', '-'));
+    document.getElementById('ext-window').classList.add(loc.id);
 }
 
-// 7. إنشاء الماركرز
+function selected(id, name) {
+    let infoCnt = document.getElementById("information-container");
+
+    let img = document.getElementById('img');
+    let p1 = infoCnt.querySelector('#p1');
+    let mapElement = infoCnt.querySelector('map[name="image-map"]');
+    let info = infoCnt.querySelector('#selected-info');
+    let infoP = infoCnt.querySelector('#info-p');
+
+    img.src = "../assets/images/Map-imgs/" + id + ".jpg";
+    p1.innerText = name;
+
+    const item = monumentsData[id];
+    if (item) {
+        mapElement.innerHTML = item.areaTag;
+        info.innerHTML = item.stats.map(stat => `
+            <section>
+                <label>${stat.label}</label>
+                <p>${stat.value}</p>
+            </section>
+        `).join('');
+        infoP.innerText = item.desc;
+    }
+
+    setTimeout(() => {
+        if (sounds[id]) sounds[id].play();
+    }, 200);
+
+    $(document).ready(function () {
+        $('img[usemap]').rwdImageMaps();
+    });
+}
+
+
+function triggerLocationClick(loc, pinElement, markerContainerElement) {
+    if (markerContainerElement) markerContainerElement.classList.remove('hover');
+    const isSameElement = (loc.id === current);
+
+    if (!isSameElement) {
+        document.querySelectorAll('.custom-marker.active').forEach(el => el.classList.remove('active'));
+        document.querySelectorAll("#icons-container img").forEach(e => e.classList.remove("active"));
+
+        if (pinElement) pinElement.classList.add('active');
+        const currentIcon = document.getElementById(loc.id);
+        if (currentIcon) currentIcon.classList.add('active');
+
+        current = loc.id;
+
+        updateWindowPosition(1600, -120, true);
+
+        setTimeout(() => {
+            selected(loc.id, loc.name);
+            updateWindowPosition(1100, -120, true);
+        }, 500);
+
+        handleMarkerClick(loc);
+    } else {
+
+        document.querySelectorAll('.custom-marker.active').forEach(el => el.classList.remove('active'));
+        document.querySelectorAll("#icons-container img").forEach(e => e.classList.remove("active"));
+
+        current = null;
+        updateWindowPosition();
+
+        if (previousCenter && previousZoom) {
+            map.flyTo({
+                center: previousCenter,
+                zoom: previousZoom,
+                duration: 2000,
+                essential: true
+            });
+            activeLocationName = null;
+            previousCenter = null;
+            previousZoom = null;
+        }
+    }
+}
+
+function closeClick(icon) {
+    const clases = icon.classList;
+    const id = clases[0];
+    const name = clases[1];
+    const markerContainer = document.querySelector(`.pin-name.${id}`);
+    const pin = document.querySelector(`.custom-marker.${id}`);
+    const loc = { id: id, name: name };
+    document.getElementById('close').removeAttribute('class');
+    triggerLocationClick(loc, pin, markerContainer);
+}
+
+function externalClick(icon) {
+    const clases = icon.classList;
+    const id = clases[0];
+    const link = monumentsData[id].link;
+    window.open(link, '_blank');
+}
+
 locations.forEach(loc => {
     let x = loc.id;
-
     const pin = document.createElement("div");
-    pin.className = "custom-marker";
+    pin.classList.add("custom-marker", loc.id);
     pin.style.cursor = "pointer";
     pin.innerHTML = `
         <svg viewBox="0 -960 960 960" style="width: 100%; height: 100%; display: block;">
@@ -199,24 +280,9 @@ locations.forEach(loc => {
         .setLngLat(loc.coords)
         .addTo(map);
 
-    pin.addEventListener('click', () => {
-        handleMarkerClick(loc);
-
-        if (myWindow) myWindow.style.transition = "transform 0.5s ease-out";
-        if (scrollBar) scrollBar.style.transition = "transform 0.5s ease-out";
-
-        if (typeof selected === "function") {
-            selected(loc.id, loc.name);
-        }
-
-        if (typeof updateWindowPosition === "function") {
-            updateWindowPosition(1100, -120);
-        }
-
-        setTimeout(() => {
-            if (myWindow) myWindow.style.transition = "none";
-            if (scrollBar) scrollBar.style.transition = "none";
-        }, 500);
+    pin.addEventListener('click', (e) => {
+        e.stopPropagation();
+        triggerLocationClick(loc, pin, markerContainer);
     });
 
     pin.addEventListener("mouseenter", () => {
@@ -226,9 +292,10 @@ locations.forEach(loc => {
     pin.addEventListener("mouseleave", () => {
         markerContainer.classList.remove('hover');
     });
+
+    console.log(loc);
 });
 
-// 8. أحداث السحب والـ Scroll للنافذة
 if (myWindow) {
     myWindow.addEventListener("mousedown", (e) => {
         if (e.target.closest('button, input, select, textarea')) return;
@@ -259,10 +326,7 @@ if (myWindow) {
             scrollY = 0;
         }
 
-        myWindow.style.transition = "none";
-        if (scrollBar) scrollBar.style.transition = "none";
-
-        updateWindowPosition(currentX, currentY);
+        updateWindowPosition(currentX, currentY, false);
     }, { passive: false });
 }
 
@@ -272,7 +336,7 @@ document.addEventListener("mousemove", (e) => {
     const newX = e.clientX - startX;
     const newY = e.clientY - startY;
 
-    updateWindowPosition(newX, newY);
+    updateWindowPosition(newX, newY, false);
 });
 
 document.addEventListener("mouseup", () => {
@@ -281,9 +345,6 @@ document.addEventListener("mouseup", () => {
     if (myWindow) myWindow.classList.remove("dragging");
 });
 
-// [تم حذف استدعاء الدالة من هنا لأن الموضع مضبوط مسبقاً من الـ CSS]
-
-// 9. دوال التحكم في أزرار الزوم الخارجي
 function zoomIn() {
     let currentZoom = map.getZoom();
     let targetZoom = Math.min(currentZoom + 0.5, 14);
@@ -307,3 +368,24 @@ function zoomOut() {
         duration: 300
     });
 }
+
+window.addEventListener("DOMContentLoaded", () => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const markerIdFromUrl = urlParams.get('markerId');
+
+    if (markerIdFromUrl) {
+        const targetLoc = locations.find(l => l.id === markerIdFromUrl);
+
+        if (targetLoc) {
+            const newUrl = window.location.pathname;
+            window.history.replaceState({}, document.title, newUrl);
+
+            setTimeout(() => {
+                const targetPinElement = document.querySelector(`.custom-marker.${markerIdFromUrl}`);
+                const targetContainerElement = document.querySelector(`.pin-name.${markerIdFromUrl}`);
+
+                triggerLocationClick(targetLoc, targetPinElement, targetContainerElement);
+            }, 200);
+        }
+    }
+});

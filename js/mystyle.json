@@ -12,6 +12,15 @@
         "openmaptiles": {
             "type": "vector",
             "url": "https://tiles.openfreemap.org/planet"
+        },
+        "terrain_dem": {
+            "type": "raster-dem",
+            "tiles": [
+                "https://s3.amazonaws.com/elevation-tiles-prod/terrarium/{z}/{x}/{y}.png"
+            ],
+            "encoding": "terrarium",
+            "tileSize": 256,
+            "maxzoom": 15
         }
     },
     "sprite": "https://tiles.openfreemap.org/sprites/ofm_f384/ofm",
@@ -43,6 +52,18 @@
                     6,
                     0.04
                 ]
+            }
+        },
+        {
+            "id": "hillshading",
+            "type": "hillshade",
+            "source": "terrain_dem",
+            "paint": {
+                "hillshade-shadow-color": "#000000",
+                "hillshade-highlight-color": "#c9a86a",
+                "hillshade-accent-color": "#c9a86a",
+                "hillshade-exaggeration": 0.6,
+                "hillshade-illumination-direction": 315
             }
         },
         {
