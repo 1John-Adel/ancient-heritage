@@ -1,33 +1,32 @@
-let archiveData = JSON.parse(localStorage.getItem("archive")) || [];
+let archiveData = JSON.parse(localStorage.getItem("archive"));
 
 console.log(archiveData)
+function removeFromLocal(key, id) {
+    let savedItems = JSON.parse(localStorage.getItem(key)) || [];
+    let updatedItems = savedItems.filter(el => el.artifactName !== id);
+    localStorage.setItem(key, JSON.stringify(updatedItems));
+}
+
 function isItemInStorage(key, id) {
     let savedItems = JSON.parse(localStorage.getItem(key)) || [];
-    return savedItems.some(item => item.id === id);
+    return savedItems.some(item => item.artifactName === id);
 }
 
 function addToLocal(key, value) {
-    let savedItems = JSON.parse(localStorage.getItem(key)) || []
-    let isExist = false
+    let savedItems = JSON.parse(localStorage.getItem(key)) || [];
+    let isExist = false;
 
     for (let i = 0; i < savedItems.length; i++) {
-        if (savedItems[i].id === value.id) {
+        if (savedItems[i].artifactName === value.name) {
             isExist = true;
             break;
         }
     }
     if (isExist)
-        return
+        return;
 
-    savedItems.push(value)
-    localStorage.setItem(key, JSON.stringify(savedItems))
-}
-
-
-function removeFromLocal(key, id) {
-    let savedItems = JSON.parse(localStorage.getItem(key)) || [];
-    let updatedItems = savedItems.filter(el => el.id !== id);
-    localStorage.setItem(key, JSON.stringify(updatedItems));
+    savedItems.push(value);
+    localStorage.setItem(key, JSON.stringify(savedItems));
 }
 
 
@@ -55,7 +54,7 @@ let colIndex = 0;
 for (let i of archiveData) {
     let card = document.createElement("div");
 
-    let x = (i.category || "").replaceAll(" ", "-");
+    let x = (i.museum || "").replaceAll(" ", "-");
 
     card.classList.add("card", x, i.artifactName.replaceAll(" ", "-"));
 
@@ -65,17 +64,17 @@ for (let i of archiveData) {
 
     let image = document.createElement("img");
 
-    let type = document.createElement("div");
+    let material = document.createElement("div");
 
-    let typetext = document.createElement("p");
+    let materialText = document.createElement("p");
 
-    typetext.innerText = i.type;
+    materialText.innerText = i.material;
 
-    type.appendChild(typetext);
+    material.appendChild(materialText);
 
     image.setAttribute("src", i.image);
 
-    imgContainer.appendChild(type);
+    imgContainer.appendChild(material);
 
     imgContainer.appendChild(image);
 
@@ -101,17 +100,17 @@ for (let i of archiveData) {
 
     museum.classList.add("artifacte-subtitle")
 
-    museum.innerText = (i.category).toUpperCase()
+    museum.innerText = (i.museum).toUpperCase()
 
     textContainer.appendChild(museum)
 
-    let dynasty = document.createElement("p")
+    let Period = document.createElement("p")
 
-    dynasty.classList.add("artifact-dynasty")
+    Period.classList.add("artifact-Period")
 
-    dynasty.innerText = (i.dynasty).toUpperCase()
+    Period.innerText = (i.Period).toUpperCase()
 
-    textContainer.appendChild(dynasty)
+    textContainer.appendChild(Period)
 
     let removeIcon = document.createElement("div");
 
@@ -123,7 +122,7 @@ for (let i of archiveData) {
     removeIcon.style.cursor = "pointer";
 
     removeIcon.onclick = () => {
-        removeFromLocal("archive", i.id);
+        removeFromLocal("archive", i.artifactName);
         card.remove();
         check();
     };

@@ -9,6 +9,10 @@ if (log === "loged") {
     Button.style.display = "block";
 }
 
+document.querySelectorAll('img').forEach(img => {
+    img.ondragstart = () => false;
+});
+
 function changeMod() {
     document.querySelector(".mode-cnt").classList.toggle("light");
     document.body.classList.toggle("light");

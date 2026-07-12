@@ -37,6 +37,7 @@ main.empty {
         padding-right: 50px;
         border-radius: 15px;
         letter-spacing: 1px;
+        outline: none;
         transition: 0.5s;
     }
 
@@ -45,7 +46,6 @@ main.empty {
     }
 
     #search-bar:focus {
-        outline: none;
         border-color: #d4af376d;
     }
 

@@ -34,7 +34,8 @@ html, body {
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box
+    box-sizing: border-box;
+    user-select: none;
 }
 
 ::selection {
@@ -81,6 +82,7 @@ body {
     justify-content: center;
     align-items: center;
     z-index: 100;
+    user-select: none;
 }
 
 #nav-bar nav {
@@ -164,6 +166,7 @@ body {
 
 
 #footer {
+    user-select: none;
     display: flex;
     height: 50px;
     align-items: center;

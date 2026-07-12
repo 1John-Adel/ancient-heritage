@@ -191,8 +191,4 @@ if (document.querySelector(".a").classList.contains("light")) {
 else {
   let currentUp = localStorage.setItem("UpMod", "dark");
 }
-let savedUp = localStorage.getItem("UpMod");
-let savedMod = localStorage.getItem("theme");
-if (savedUp !== savedMod) {
-  upMod();
-}
+

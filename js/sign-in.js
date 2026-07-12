@@ -101,39 +101,3 @@ function clearM(index) {
   errorM[index].innerText = "";
 }
 
-function inMod() {
-
-  const elementsToToggle = [
-    ".a", ".miniTitle", "h1 span", "h1", ".line",
-    ".description", ".sign-in", "button", ".or",
-    "form div", ".form-link .active",
-    ".form-link .sign",".pass i"
-  ];
-
-  elementsToToggle.forEach(selector => {
-    const el = document.querySelector(selector);
-    if (el) {
-      el.classList.toggle("light");
-    }
-  });
-
-  const groups = ["div label", "div input", ".sign-in p", ".Q a", ".icon"];
-  groups.forEach(selector => {
-    document.querySelectorAll(selector).forEach(el => {
-      el.classList.toggle("light");
-    });
-  });
-}
-
-const container = document.querySelector(".a");
-if (container.classList.contains("light")) {
-  localStorage.setItem("InMod", "light");
-}
-else {
-  localStorage.setItem("InMod", "dark");
-}
-let savedIn = localStorage.getItem("InMod");
-let savedMod = localStorage.getItem("theme");
-if (savedIn !== savedMod) {
-  inMod();
-}

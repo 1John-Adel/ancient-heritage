@@ -1,571 +1,644 @@
 let products = {
     data: [
         {
-            id: 1,
+            id: "coptic",
             artifactName: "Galaktotrophousa",
-            category: "Coptic Museum",
+            museum: "Coptic Museum",
             image: "../assets/images/coptic museum/1.jpg",
             material: "Wall Painting",
-            dynasty: "Coptic Period",
-            type: "Icons"
+            Period: "Coptic Period",
+            type: "Icons",
+            link: "https://egymonuments.gov.eg/en/collections/niche-of-virgin-mary-11"
         },
         {
-            id: 2,
+            id: "coptic",
             artifactName: "Psalter",
-            category: "Coptic Museum",
+            museum: "Coptic Museum",
             image: "../assets/images/coptic museum/dsc_0040.jpg",
             material: "Manuscript",
-            dynasty: "Coptic Period",
-            type: "Manuscripts"
+            Period: "Coptic Period",
+            type: "Manuscripts",
+            link: "http://egymonuments.gov.eg/en/collections/psalter-11"
         },
         {
-            id: 3,
+            id: "coptic",
             artifactName: "Holy Family’s flight into Egypt",
-            category: "Coptic Museum",
+            museum: "Coptic Museum",
             image: "../assets/images/coptic museum/dsc.jpg",
             material: "Tempera on wood",
-            dynasty: "Coptic Period",
-            type: "Icons"
+            Period: "Coptic Period",
+            type: "Icons",
+            link: "https://egymonuments.gov.eg/en/collections/icon-of-the-holy-family-s-flight-into-egypt-11"
         },
         {
-            id: 4,
+            id: "coptic",
             artifactName: "Saint Anthony and Saint Paul the Hermit",
-            category: "Coptic Museum",
+            museum: "Coptic Museum",
             image: "../assets/images/coptic museum/g75a3519.jpg",
             material: "Tempera on wood",
-            dynasty: "Coptic Period",
-            type: "Icons"
+            Period: "Coptic Period",
+            type: "Icons",
+            link: "https://egymonuments.gov.eg/en/collections/icon-of-saint-antony-and-saint-paul-11"
         },
         {
-            id: 5,
+            id: "coptic",
             artifactName: "Jesus’s entry into Jerusalem",
-            category: "Coptic Museum",
+            museum: "Coptic Museum",
             image: "../assets/images/coptic museum/page69-1003-full.jpg",
             material: "Carved wood",
-            dynasty: "Coptic Period",
-            type: "Icons"
+            Period: "Coptic Period",
+            type: "Icons",
+            link: "https://egymonuments.gov.eg/en/collections/lintel-depicting-jesus-christ-s-entry-into-jerusalem-11"
         },
         {
-            id: 6,
-            artifactName: "Coptic Pottery",
-            category: "Coptic Museum",
+            id: "coptic",
+            artifactName: "St. Jeremiah’s Pulpit",
+            museum: "Coptic Museum",
             image: "../assets/images/coptic museum/القبطي-7.jpg",
-            material: "Clay",
-            dynasty: "Coptic Period",
-            type: "Artifacts"
+            material: "stone",
+            Period: "Coptic Period",
+            type: "Artifacts",
+            link: ""
         },
         {
-            id: 7,
-            artifactName: "Coptic Sculpture",
-            category: "Coptic Museum",
+            id: "coptic",
+            artifactName: "Three monumental keys of Monasteries",
+            museum: "Coptic Museum",
             image: "../assets/images/coptic museum/القبطي-9.jpg",
-            material: "Sandstone",
-            dynasty: "Coptic Period",
-            type: "Statues"
+            material: "Iron, Bronze and Copper",
+            Period: "Coptic Period",
+            type: "Artifacts",
+            link: "https://egymonuments.gov.eg/en/collections/three-monumental-keys-of-monasteries-11"
         },
         {
-            id: 8,
+            id: "coptic",
             artifactName: "The Piper's Curtain",
-            category: "Coptic Museum",
+            museum: "Coptic Museum",
             image: "../assets/images/coptic museum/القبطي-20.jpg",
             material: "Textile",
-            dynasty: "Coptic Period",
-            type: "Artifacts"
+            Period: "Coptic Period",
+            type: "Artifacts",
+            link: "https://egymonuments.gov.eg/en/collections/pipers-curtain-11"
         },
         {
-            id: 9,
+            id: "egyptian",
+            artifactName: "Tondo of the Two Brothers",
+            museum: "Egyptian Museum",
+            image: "../assets/images/egy museum/21-1.jpg",
+            material: "wood",
+            Period: "Roman Period",
+            type: "Icons",
+            link: "https://egyptianmuseumcairo.eg/artefacts/portrait-of-two-brothers/"
+        },
+        {
+            id: "egyptian",
             artifactName: "Statue of Osiris",
-            category: "Egyptian Museum",
+            museum: "Egyptian Museum",
             image: "../assets/images/egy museum/25-1.jpg",
             material: "Schist",
-            dynasty: "Late Period",
-            type: "Statues"
+            Period: "Late Period",
+            type: "Statues",
+            link: "https://egyptianmuseumcairo.eg/artefacts/statuette-of-osiris/"
         },
         {
-            id: 10,
+            id: "egyptian",
             artifactName: "Buchis Stela of Ptolemy V",
-            category: "Egyptian Museum",
+            museum: "Egyptian Museum",
             image: "../assets/images/egy museum/31-1.jpg",
             material: "Stone mural",
-            dynasty: "Ptolemaic Dynasty",
-            type: "Artifacts"
+            Period: "Ptolemaic Period",
+            type: "Artifacts",
+            link: "https://egyptianmuseumcairo.eg/artefacts/stela-of-buchis-bull/"
         },
         {
-            id: 11,
+            id: "egyptian",
             artifactName: "Mosaic with Medusa",
-            category: "Egyptian Museum",
+            museum: "Egyptian Museum",
             image: "../assets/images/egy museum/32-1-1024x682.jpg",
             material: "Mosaic",
-            dynasty: "Roman Period",
-            type: "Artifacts"
+            Period: "Roman Period",
+            type: "Artifacts",
+            link: "https://egyptianmuseumcairo.eg/artefacts/mosaic-with-medusa/"
         },
         {
-            id: 12,
+            id: "egyptian",
             artifactName: "Ramesses II as a child with hauron",
-            category: "Egyptian Museum",
+            museum: "Egyptian Museum",
             image: "../assets/images/egy museum/32h.png",
             material: "Greywacke",
-            dynasty: "New Kingdom",
-            type: "Statues"
+            Period: "New Kingdom",
+            type: "Statues",
+            link: "https://egyptianmuseumcairo.eg/artefacts/statue-of-ramesses-ii-as-a-child-and-the-god-horun/"
         },
         {
-            id: 13,
+            id: "egyptian",
             artifactName: "Head of a Gaul",
-            category: "Egyptian Museum",
+            museum: "Egyptian Museum",
             image: "../assets/images/egy museum/34-1.jpg",
             material: "Marble",
-            dynasty: "Ptolemaic Dynasty",
-            type: "Statues"
+            Period: "Ptolemaic Period",
+            type: "Statues",
+            link: "https://egyptianmuseumcairo.eg/artefacts/head-of-a-galatian/"
         },
         {
-            id: 14,
+            id: "egyptian",
             artifactName: "Canopus Decree of Ptolemy III",
-            category: "Egyptian Museum",
+            museum: "Egyptian Museum",
             image: "../assets/images/egy museum/35-1.jpg",
             material: "Greywacke",
-            dynasty: "Ptolemaic Dynasty",
-            type: "Artifacts"
+            Period: "Ptolemaic Period",
+            type: "Artifacts",
+            link: "https://egyptianmuseumcairo.eg/artefacts/stela-with-canope-decree/"
         },
         {
-            id: 15,
+            id: "egyptian",
             artifactName: "Tetisheri Stela",
-            category: "Egyptian Museum",
+            museum: "Egyptian Museum",
             image: "../assets/images/egy museum/40-1.jpg",
             material: "Limestone",
-            dynasty: "New Kingdom",
-            type: "Artifacts"
+            Period: "New Kingdom",
+            type: "Artifacts",
+            link: "https://egyptianmuseumcairo.eg/artefacts/stela-of-the-king-ahmose/"
         },
         {
-            id: 16,
+            id: "egyptian",
             artifactName: "Ramses III between Horus and Seth",
-            category: "Egyptian Museum",
+            museum: "Egyptian Museum",
             image: "../assets/images/egy museum/43-1.jpg",
             material: "Granite",
-            dynasty: "New Kingdom",
-            type: "Statues"
+            Period: "New Kingdom",
+            type: "Statues",
+            link: "https://egyptianmuseumcairo.eg/artefacts/statue-of-ramses-iii-between-horus-and-seth/"
         },
         {
-            id: 17,
+            id: "egyptian",
             artifactName: "Relief of Akhenaten",
-            category: "Egyptian Museum",
+            museum: "Egyptian Museum",
             image: "../assets/images/egy museum/49-1-1024x1024.jpg",
             material: "Limestone",
-            dynasty: "New Kingdom",
-            type: "Artifacts"
+            Period: "New Kingdom",
+            type: "Artifacts",
+            link: "https://egyptianmuseumcairo.eg/artefacts/limestone-relief-of-akhenaten/"
         },
         {
-            id: 18,
+            id: "egyptian",
             artifactName: "Seated Statue of Sennefer",
-            category: "Egyptian Museum",
+            museum: "Egyptian Museum",
             image: "../assets/images/egy museum/54.jpg",
             material: "Greywacke",
-            dynasty: "New Kingdom",
-            type: "Statues"
+            Period: "New Kingdom",
+            type: "Statues",
+            link: "https://egyptianmuseumcairo.eg/artefacts/seated-statue-of-sennefer/"
         },
         {
-            id: 19,
+            id: "egyptian",
             artifactName: "Statue of Hor",
-            category: "Egyptian Museum",
+            museum: "Egyptian Museum",
             image: "../assets/images/egy museum/64.jpg",
             material: "Greywacke",
-            dynasty: "Middle Kingdom",
-            type: "Statues"
+            Period: "Middle Kingdom",
+            type: "Statues",
+            link: "https://egyptianmuseumcairo.eg/artefacts/statue-of-hor-son-of-ankh-khonsu/"
         },
         {
-            id: 20,
+            id: "egyptian",
             artifactName: "priest of god Amun Djedhor",
-            category: "Egyptian Museum",
+            museum: "Egyptian Museum",
             image: "../assets/images/egy museum/67-819x1024.jpg",
             material: "Greywacke",
-            dynasty: "Late Period",
-            type: "Statues"
+            Period: "Late Period",
+            type: "Statues",
+            link: "https://egyptianmuseumcairo.eg/artefacts/statue-of-the-priest-of-god-amun-called-djedhor/"
         },
         {
-            id: 21,
+            id: "egyptian",
             artifactName: "Funerary Mask of Tuya",
-            category: "Egyptian Museum",
+            museum: "Egyptian Museum",
             image: "../assets/images/egy museum/84.jpg",
             material: "Cartonnage",
-            dynasty: "New Kingdom",
-            type: "Artifacts"
+            Period: "New Kingdom",
+            type: "Artifacts",
+            link: "https://egyptianmuseumcairo.eg/artefacts/funerary-mask-of-tuya/"
         },
         {
-            id: 22,
+            id: "egyptian",
             artifactName: "Akhenaten, Amonhotep IV",
-            category: "Egyptian Museum",
+            museum: "Egyptian Museum",
             image: "../assets/images/egy museum/99-819x1024.jpg",
             material: "Sandstone",
-            dynasty: "New Kingdom",
-            type: "Statues"
+            Period: "New Kingdom",
+            type: "Statues",
+            link: "https://egyptianmuseumcairo.eg/artefacts/bust-of-akhenaten-amonhotep-iv/"
         },
         {
-            id: 23,
+            id: "egyptian",
             artifactName: "Menkaure Triad",
-            category: "Egyptian Museum",
+            museum: "Egyptian Museum",
             image: "../assets/images/egy museum/egyptian_triad.png",
             material: "Greywacke",
-            dynasty: "Old Kingdom",
-            type: "Statues"
+            Period: "Old Kingdom",
+            type: "Statues",
+            link: "https://egyptianmuseumcairo.eg/artefacts/menkaure-triad/"
         },
         {
-            id: 24,
+            id: "gem",
             artifactName: "Guardian Statue of Tutankhamun",
-            category: "Egyptian Museum",
+            museum: "Grand Egyptian Museum",
             image: "../assets/images/egy museum/ka-tutankhamun-guard-statue.jpg",
             material: "Wood",
-            dynasty: "New Kingdom",
-            type: "Statues"
+            Period: "New Kingdom",
+            type: "Statues",
+            link: "https://gem.eg/en/collection/artefacts/guardian-statue-with-nemes-headcloth"
         },
         {
-            id: 25,
+            id: "gem",
             artifactName: "Mask of Tutankhamun",
-            category: "Egyptian Museum",
+            museum: "Grand Egyptian Museum",
             image: "../assets/images/egy museum/Tutankhamon-mask.png",
             material: "Gold",
-            dynasty: "New Kingdom",
-            type: "Artifacts"
+            Period: "New Kingdom",
+            type: "Artifacts",
+            link: "https://gem.eg/en/collection/artefacts/the-golden-burial-mask-of-tutankhamun"
         },
         {
-            id: 26,
+            id: "egyptian",
             artifactName: "Yuya and Tuya papyrus",
-            category: "Egyptian Museum",
+            museum: "Egyptian Museum",
             image: "../assets/images/egy museum/Yuya-and-Thuya-papyrus-emc-1024x851.jpg",
             material: "Papyrus",
-            dynasty: "New Kingdom",
-            type: "Manuscripts"
+            Period: "New Kingdom",
+            type: "Manuscripts",
+            link: "https://egyptianmuseumcairo.eg/artefacts/yuya-and-tuya-papyrus/"
         },
         {
-            id: 27,
+            id: "gem",
             artifactName: "Statue of Senwosert I",
-            category: "Grand Egyptian Museum",
+            museum: "Grand Egyptian Museum",
             image: "../assets/images/grand egy museum/1689_1grand.jpeg",
             material: "Limestone",
-            dynasty: "Middle Kingdom",
-            type: "Statues"
+            Period: "Middle Kingdom",
+            type: "Statues",
+            link: "https://gem.eg/en/collection/artefacts/seated-statue-of-senwosert-i"
         },
         {
-            id: 28,
+            id: "gem",
             artifactName: "God Ptah,King RamessesII & Goddess Sekhmet",
-            category: "Grand Egyptian Museum",
+            museum: "Grand Egyptian Museum",
             image: "../assets/images/grand egy museum/45815.jpeg",
             material: "Granite",
-            dynasty: "New Kingdom",
-            type: "Statues"
+            Period: "New Kingdom",
+            type: "Statues",
+            link: "https://gem.eg/en/collection/artefacts/statue-of-god-ptah-king-ramesses-ii-and-sekhmet"
         },
         {
-            id: 29,
+            id: "gem",
             artifactName: "Isis and Horus",
-            category: "Grand Egyptian Museum",
+            museum: "Grand Egyptian Museum",
             image: "../assets/images/grand egy museum/5132.jpeg",
             material: "Sandstone",
-            dynasty: "Late Period",
-            type: "Statues"
+            Period: "Late Period",
+            type: "Statues",
+            link: "https://gem.eg/en/collection/artefacts/isis-and-horus"
         },
         {
-            id: 30,
+            id: "gem",
             artifactName: "Canopic Coffinette",
-            category: "Grand Egyptian Museum",
+            museum: "Grand Egyptian Museum",
             image: "../assets/images/grand egy museum/canopic-coffinette.jpeg",
             material: "Gold",
-            dynasty: "New Kingdom",
-            type: "Artifacts"
+            Period: "New Kingdom",
+            type: "Artifacts",
+            link: "https://gem.eg/en/collection/artefacts/canopic-coffinette"
         },
         {
-            id: 31,
+            id: "gem",
             artifactName: "Statue of Thutmose IV",
-            category: "Grand Egyptian Museum",
+            museum: "Grand Egyptian Museum",
             image: "../assets/images/grand egy museum/gem3799-1.jpeg",
             material: "Granite",
-            dynasty: "New Kingdom",
-            type: "Statues"
+            Period: "New Kingdom",
+            type: "Statues",
+            link: "https://gem.eg/en/collection/artefacts/upper-part-of-a-statue-of-thutmose-iv"
         },
         {
-            id: 32,
+            id: "gem",
             artifactName: "Ptolemaic King and Queen",
-            category: "Grand Egyptian Museum",
+            museum: "Grand Egyptian Museum",
             image: "../assets/images/grand egy museum/grand-hall.jpeg",
             material: "Granite",
-            dynasty: "Ptolemaic Dynasty",
-            type: "Statues"
+            Period: "Ptolemaic Period",
+            type: "Statues",
+            link: "https://gem.eg/en/collection/artefacts/colossus-of-a-ptolemaic-queen"
         },
         {
-            id: 33,
+            id: "gem",
             artifactName: "Ptolemaic King",
-            category: "Grand Egyptian Museum",
+            museum: "Grand Egyptian Museum",
             image: "../assets/images/grand egy museum/king.jpeg",
             material: "Granite",
-            dynasty: "Ptolemaic Dynasty",
-            type: "Statues"
+            Period: "Ptolemaic Period",
+            type: "Statues",
+            link: "https://gem.eg/en/collection/artefacts/colossus-of-a-ptolemaic-king-1"
         },
         {
-            id: 34,
+            id: "islamic",
             artifactName: "Brooch",
-            category: "Islamic Art Museum",
+            museum: "Islamic Art Museum",
             image: "../assets/images/islamic art/Upload_Product_Entity_Db_Product_MainImage_01fcf36fa88db82d1741109361de66b4.jpg",
             material: "Gold",
-            dynasty: "Islamic Period",
-            type: "Artifacts"
+            Period: "Islamic Period",
+            type: "Artifacts",
+            link: "https://www.miaegypt.org/en-us/museum/collection/gallery-item-details/jewelry?product=brooch"
         },
         {
-            id: 35,
+            id: "islamic",
             artifactName: "Panel",
-            category: "Islamic Art Museum",
+            museum: "Islamic Art Museum",
             image: "../assets/images/islamic art/Upload_Product_Entity_Db_Product_MainImage_2365378f8c2302a0dadb7f160eb3a141.jpg",
             material: "Carved wood",
-            dynasty: "Islamic Period",
-            type: "Artifacts"
+            Period: "Islamic Period",
+            type: "Artifacts",
+            link: "https://www.miaegypt.org/en-us/museum/collection/gallery-item-details/wood?product=panel"
         },
         {
-            id: 36,
+            id: "islamic",
             artifactName: "Carved ivory box",
-            category: "Islamic Art Museum",
+            museum: "Islamic Art Museum",
             image: "../assets/images/islamic art/Upload_Product_Entity_Db_Product_MainImage_272a9cf87c67f77278f9e290158bb148.jpg",
             material: "Ivory",
-            dynasty: "Islamic Period",
-            type: "Artifacts"
+            Period: "Islamic Period",
+            type: "Artifacts",
+            link: "https://www.miaegypt.org/en-us/museum/collection/gallery-item-details/ivory?product=cylindrical-boxe"
         },
         {
-            id: 37,
+            id: "islamic",
             artifactName: "Holy quran",
-            category: "Islamic Art Museum",
+            museum: "Islamic Art Museum",
             image: "../assets/images/islamic art/Upload_Product_Entity_Db_Product_MainImage_2bc90c5684b68af1b4b472e73dbb6105.jpg",
             material: "Paper",
-            dynasty: "Islamic Period",
-            type: "Manuscripts"
+            Period: "Islamic Period",
+            type: "Manuscripts",
+            link: "https://www.miaegypt.org/en-us/museum/collection/gallery-item-details/manuscript?product=holyquran"
         },
         {
-            id: 38,
+            id: "islamic",
             artifactName: "Marble Jar and Kilga",
-            category: "Islamic Art Museum",
+            museum: "Islamic Art Museum",
             image: "../assets/images/islamic art/Upload_Product_Entity_Db_Product_MainImage_3b92780b894227daad33468322e050c4.jpg",
             material: "Limestone",
-            dynasty: "Islamic Period",
-            type: "Artifacts"
+            Period: "Islamic Period",
+            type: "Artifacts",
+            link: "https://www.miaegypt.org/en-us/museum/collection/gallery-item-details/stone?product=marble-jar"
         },
         {
-            id: 39,
+            id: "islamic",
             artifactName: "Shield",
-            category: "Islamic Art Museum",
+            museum: "Islamic Art Museum",
             image: "../assets/images/islamic art/Upload_Product_Entity_Db_Product_MainImage_3fb7a17bfed491f1a57e4de489c6a2fe.jpg",
             material: "Steel",
-            dynasty: "Islamic Period",
-            type: "Artifacts"
+            Period: "Islamic Period",
+            type: "Artifacts",
+            link: "https://www.miaegypt.org/en-us/museum/collection/gallery-item-details/weapon?product=shield"
         },
         {
-            id: 40,
+            id: "islamic",
             artifactName: "Kohl Container",
-            category: "Islamic Art Museum",
+            museum: "Islamic Art Museum",
             image: "../assets/images/islamic art/Upload_Product_Entity_Db_Product_MainImage_41acd447f199715a054f3dcee4cfbcca.jpg",
             material: "Ivory",
-            dynasty: "Islamic Period",
-            type: "Artifacts"
+            Period: "Islamic Period",
+            type: "Artifacts",
+            link: "https://www.miaegypt.org/en-us/museum/collection/gallery-item-details/ivory?product=kohl-containe"
         },
         {
-            id: 41,
+            id: "islamic",
             artifactName: "Balcony",
-            category: "Islamic Art Museum",
+            museum: "Islamic Art Museum",
             image: "../assets/images/islamic art/Upload_Product_Entity_Db_Product_MainImage_57fce086ce9de4941a19069077fccdac.jpg",
             material: "Wood",
-            dynasty: "Islamic Period",
-            type: "Artifacts"
+            Period: "Islamic Period",
+            type: "Artifacts",
+            link: "https://www.miaegypt.org/en-us/museum/collection/gallery-item-details/wood?product=balcony"
         },
         {
-            id: 42,
+            id: "islamic",
             artifactName: "Hilya",
-            category: "Islamic Art Museum",
+            museum: "Islamic Art Museum",
             image: "../assets/images/islamic art/Upload_Product_Entity_Db_Product_MainImage_5b3e6e86c4fa053c1a0a4919edc2c2aa.jpg",
             material: "Paper",
-            dynasty: "Islamic Period",
-            type: "Manuscripts"
+            Period: "Islamic Period",
+            type: "Manuscripts",
+            link: "https://www.miaegypt.org/en-us/museum/collection/gallery-item-details/manuscript?product=hilya"
         },
         {
-            id: 43,
+            id: "islamic",
             artifactName: "Dinar",
-            category: "Islamic Art Museum",
+            museum: "Islamic Art Museum",
             image: "../assets/images/islamic art/Upload_Product_Entity_Db_Product_MainImage_600554ca970ab847202d3172b74cc327.jpg",
             material: "Gold",
-            dynasty: "Islamic Period",
-            type: "Artifacts"
+            Period: "Islamic Period",
+            type: "Artifacts",
+            link: "https://www.miaegypt.org/en-us/museum/collection/gallery-item-details/coin?product=dinar3"
         },
         {
-            id: 44,
+            id: "islamic",
             artifactName: "Helmet",
-            category: "Islamic Art Museum",
+            museum: "Islamic Art Museum",
             image: "../assets/images/islamic art/Upload_Product_Entity_Db_Product_MainImage_65ec5cec3ab63bba7d07da6161a565af.jpg",
             material: "Steel",
-            dynasty: "Islamic Period",
-            type: "Artifacts"
+            Period: "Islamic Period",
+            type: "Artifacts",
+            link: "https://www.miaegypt.org/en-us/museum/collection/gallery-item-details/weapon?product=helmet"
         },
         {
-            id: 45,
+            id: "islamic",
             artifactName: "Gold ring",
-            category: "Islamic Art Museum",
+            museum: "Islamic Art Museum",
             image: "../assets/images/islamic art/Upload_Product_Entity_Db_Product_MainImage_6a807e29fdfc1646e998a5741898ae51.jpg",
             material: "Gold",
-            dynasty: "Islamic Period",
-            type: "Artifacts"
+            Period: "Islamic Period",
+            type: "Artifacts",
+            link: "https://www.miaegypt.org/en-us/museum/collection/gallery-item-details/jewelry?product=gold-ring"
         },
         {
-            id: 46,
+            id: "islamic",
             artifactName: "Shard",
-            category: "Islamic Art Museum",
+            museum: "Islamic Art Museum",
             image: "../assets/images/islamic art/Upload_Product_Entity_Db_Product_MainImage_7044d4e92c9a6e235647fed73dfd155e.jpg",
             material: "Fritware",
-            dynasty: "Islamic Period",
-            type: "Artifacts"
+            Period: "Islamic Period",
+            type: "Artifacts",
+            link: "https://www.miaegypt.org/en-us/museum/collection/gallery-item-details/ceramic?product=shard2"
         },
         {
-            id: 47,
+            id: "islamic",
             artifactName: "Table",
-            category: "Islamic Art Museum",
+            museum: "Islamic Art Museum",
             image: "../assets/images/islamic art/Upload_Product_Entity_Db_Product_MainImage_7fc45dba83f250dac475499b89f9f27c.jpg",
             material: "Copper Alloy",
-            dynasty: "Islamic Period",
-            type: "Artifacts"
+            Period: "Islamic Period",
+            type: "Artifacts",
+            link: "https://www.miaegypt.org/en-us/museum/collection/gallery-item-details/metalwork?product=table"
         },
         {
-            id: 48,
+            id: "islamic",
             artifactName: "Goblet",
-            category: "Islamic Art Museum",
+            museum: "Islamic Art Museum",
             image: "../assets/images/islamic art/Upload_Product_Entity_Db_Product_MainImage_8560b6eb144825f05bc04482093d1821.jpg",
             material: "Glass",
-            dynasty: "Islamic Period",
-            type: "Artifacts"
+            Period: "Islamic Period",
+            type: "Artifacts",
+            link: "https://www.miaegypt.org/en-us/museum/collection/gallery-item-details/glass?product=goblet"
         },
         {
-            id: 49,
+            id: "islamic",
             artifactName: "Lantern",
-            category: "Islamic Art Museum",
+            museum: "Islamic Art Museum",
             image: "../assets/images/islamic art/Upload_Product_Entity_Db_Product_MainImage_ac7381aa9dde8629b170bdc15c3b8dba.jpg",
             material: "Copper Alloy",
-            dynasty: "Islamic Period",
-            type: "Artifacts"
+            Period: "Islamic Period",
+            type: "Artifacts",
+            link: "https://www.miaegypt.org/en-us/museum/collection/gallery-item-details/metalwork?product=lantern"
         },
         {
-            id: 50,
+            id: "islamic",
             artifactName: "Mosque lamp",
-            category: "Islamic Art Museum",
+            museum: "Islamic Art Museum",
             image: "../assets/images/islamic art/Upload_Product_Entity_Db_Product_MainImage_c9cd95d54c203d9c81be15f61b22b6cc.jpg",
             material: "Glass",
-            dynasty: "Islamic Period",
-            type: "Artifacts"
+            Period: "Islamic Period",
+            type: "Artifacts",
+            link: "https://www.miaegypt.org/en-us/museum/collection/gallery-item-details/glass?product=mosque-lamp1"
         },
         {
-            id: 51,
+            id: "islamic",
             artifactName: "Tile",
-            category: "Islamic Art Museum",
+            museum: "Islamic Art Museum",
             image: "../assets/images/islamic art/Upload_Product_Entity_Db_Product_MainImage_d8d07ad22dcc16674a79946bed8f571d.jpg",
             material: "Fritware",
-            dynasty: "Islamic Period",
-            type: "Artifacts"
+            Period: "Islamic Period",
+            type: "Artifacts",
+            link: "https://www.miaegypt.org/en-us/museum/collection/gallery-item-details/ceramic?product=tile"
         },
         {
-            id: 52,
+            id: "islamic",
             artifactName: "Tombstone",
-            category: "Islamic Art Museum",
+            museum: "Islamic Art Museum",
             image: "../assets/images/islamic art/Upload_Product_Entity_Db_Product_MainImage_da53da1f3dae66f0e20fafeda452798f.jpg",
             material: "Limestone",
-            dynasty: "Islamic Period",
-            type: "Artifacts"
+            Period: "Islamic Period",
+            type: "Artifacts",
+            link: "https://www.miaegypt.org/en-us/museum/collection/gallery-item-details/stone?product=tombstone"
         },
         {
-            id: 53,
+            id: "islamic",
             artifactName: "Kiswah",
-            category: "Islamic Art Museum",
+            museum: "Islamic Art Museum",
             image: "../assets/images/islamic art/Upload_Product_Entity_Db_Product_MainImage_de3c0cf916d4034c3da772dc724c5660.jpg",
             material: "Textile",
-            dynasty: "Islamic Period",
-            type: "Artifacts"
+            Period: "Islamic Period",
+            type: "Artifacts",
+            link: "https://www.miaegypt.org/en-us/museum/collection/gallery-item-details/textil?product=textile1"
         },
         {
-            id: 54,
+            id: "islamic",
             artifactName: "Carpet",
-            category: "Islamic Art Museum",
+            museum: "Islamic Art Museum",
             image: "../assets/images/islamic art/Upload_Product_Entity_Db_Product_MainImage_fd64eb232edf3d85acafb8d2811a8c93.jpg",
             material: "Textile",
-            dynasty: "Islamic Period",
-            type: "Artifacts"
+            Period: "Islamic Period",
+            type: "Artifacts",
+            link: "https://www.miaegypt.org/en-us/museum/collection/gallery-item-details/textil?product=carpet"
         },
         {
-            id: 55,
+            id: "nmec",
             artifactName: "The coffin of Sennedjem",
-            category: "NMEC",
+            museum: "NMEC",
             image: "../assets/images/nmec/2023-02-03-05.24-scaled.jpg",
             material: "Wood",
-            dynasty: "New Kingdom",
-            type: "Statues"
+            Period: "New Kingdom",
+            type: "Statues",
+            link: "https://nmec.gov.eg/main-gallery/#:~:text=his%20tomb%20in%20Deir%20Al%20Madina.%20The%20inner%20coffin%20of"
         },
         {
-            id: 56,
+            id: "nmec",
             artifactName: "Queen Ahmose Nefertari coffin",
-            category: "NMEC",
+            museum: "NMEC",
             image: "../assets/images/nmec/Ahmus-nerftari-2048x1678.jpg",
             material: "Wood",
-            dynasty: "New Kingdom",
-            type: "Statues"
+            Period: "New Kingdom",
+            type: "Statues",
+            link: "https://nmec.gov.eg/mummies-gallery/#:~:text=The%20Outer%20Coffin%20of%20Queen%20Ahmose%20Nefertari"
         },
         {
-            id: 57,
+            id: "nmec",
             artifactName: "Al Falaha",
-            category: "NMEC",
+            museum: "NMEC",
             image: "../assets/images/nmec/Al-Falaha-scaled.jpg",
             material: "White marble",
-            dynasty: "Modern Period",
-            type: "Statues"
+            Period: "Modern Period",
+            type: "Statues",
+            link: "https://nmec.gov.eg/main-gallery/#:~:text=Al%20Falaha%20Statue%20by%20Mahmoud%20Mokhtar"
         },
         {
-            id: 58,
+            id: "nmec",
             artifactName: "Kaaba Kiswa",
-            category: "NMEC",
+            museum: "NMEC",
             image: "../assets/images/nmec/Bab-Al-Tawba-scaled.jpg",
             material: "Textile",
-            dynasty: "Islamic Period",
-            type: "Artifacts"
+            Period: "Islamic Period",
+            type: "Artifacts",
+            link: "https://nmec.gov.eg/textile-gallery/#:~:text=This%20specific%20piece%20has%20graced%20the%20Baab%20El"
         },
         {
-            id: 59,
+            id: "nmec",
             artifactName: "Bawit Virgin",
-            category: "NMEC",
+            museum: "NMEC",
             image: "../assets/images/nmec/Dome-2048x1459.jpg",
             material: "Limestone",
-            dynasty: "Coptic Period",
-            type: "Statues"
+            Period: "Coptic Period",
+            type: "Statues",
+            link: "https://nmec.gov.eg/main-gallery/#:~:text=Coptic%20artifacts%20resides,%20serves%20as%20an"
         },
         {
-            id: 60,
+            id: "nmec",
             artifactName: "Ekhnaton Statue",
-            category: "NMEC",
+            museum: "NMEC",
             image: "../assets/images/nmec/image00004.jpg",
             material: "Sandstone",
-            dynasty: "New Kingdom",
-            type: "Statues"
+            Period: "New Kingdom",
+            type: "Statues",
+            link: "https://nmec.gov.eg/main-gallery/#:~:text=to%20around%201300%20BC"
         },
         {
-            id: 61,
+            id: "nmec",
             artifactName: "Uniforms",
-            category: "NMEC",
+            museum: "NMEC",
             image: "../assets/images/nmec/image00008.jpg",
             material: "Textile",
-            dynasty: "Modern Period",
-            type: "Artifacts"
+            Period: "Modern Period",
+            type: "Artifacts",
+            link: "https://nmec.gov.eg/textile-gallery/#:~:text=formal%20processions"
         },
         {
-            id: 62,
+            id: "nmec",
             artifactName: "coffin of King Thutmose",
-            category: "NMEC",
+            museum: "NMEC",
             image: "../assets/images/nmec/image00015.jpg",
             material: "Wood",
-            dynasty: "New Kingdom",
-            type: "Statues"
+            Period: "New Kingdom",
+            type: "Statues",
+            link: "https://nmec.gov.eg/mummies-gallery/#:~:text=golden%20decorations"
         },
         {
-            id: 63,
+            id: "nmec",
             artifactName: "Mahmal King Farouk",
-            category: "NMEC",
+            museum: "NMEC",
             image: "../assets/images/nmec/Mahmal-scaled.jpg",
             material: "Textile & Wood",
-            dynasty: "Modern Period",
-            type: "Artifacts"
+            Period: "Modern Period",
+            type: "Artifacts",
+            link: "https://nmec.gov.eg/main-gallery/#:~:text=Egypt%20to%20Saudi%20Arabia"
         }
     ]
 };
@@ -619,7 +692,7 @@ const monumentsData = {
         stats: [
             { label: "LOCATION", value: "Western Desert" },
             { label: "FAMOUS FOR", value: "Temple of Oracle" },
-            { label: "FOUNDED", value: "26th Dynasty" },
+            { label: "FOUNDED", value: "26th Period" },
             { label: "STATE", value: "UNESCO Heritage" }
         ],
         desc: "One of Egypt's most isolated settlements, Siwa is a natural paradise famous for its unique Berber culture and the historic Shali Fortress, where the Oracle of Amun once stood."
@@ -634,7 +707,7 @@ const monumentsData = {
             { label: "STATE", value: "Archeological Site" }
         ],
         desc: "Known as the \"Northern Oasis,\" Bahariya is a lush depression surrounded by black hills. It gained worldwide fame with the discovery of the Valley of the Golden Mummies and serves as the main gateway to the stunning Black and White Deserts."
-        ,link: "https://maps.app.goo.gl/pDDdVhqSwocngyGz7"
+        , link: "https://maps.app.goo.gl/pDDdVhqSwocngyGz7"
     },
     "farafra": {
         areaTag: `<area target="_blank" alt="" title="" href="https://en.wikipedia.org/wiki/Farafra,_Egypt" coords="46,248,57,214,54,141,62,131,62,54,122,27,126,9,147,7,148,20,182,31,202,23,223,33,236,52,250,72,259,89,252,123,222,157,213,191,222,220,262,247,516,375,502,389,2,389,-1,272" shape="poly">`,
@@ -645,7 +718,7 @@ const monumentsData = {
             { label: "STATE", value: "Natural Protectorate" }
         ],
         desc: "A tranquil oasis known for its traditional mud-brick architecture, Farafra is the closest point to the world-renowned White Desert National Park, famous for its surreal chalk-white rock formations shaped by centuries of wind erosion."
-        ,link: "https://maps.app.goo.gl/Wj4BbApFMfXwsPhF9"
+        , link: "https://maps.app.goo.gl/Wj4BbApFMfXwsPhF9"
     },
     "dakhla": {
         areaTag: `<area target="_blank" alt="" title="" href="https://en.wikipedia.org/wiki/Dakhla_Oasis" coords="-1,100,673,390" shape="rect">`,
@@ -656,7 +729,7 @@ const monumentsData = {
             { label: "STATE", value: "Archeological Site" }
         ],
         desc: "Considered one of the most beautiful oases in Egypt, Dakhla is home to the stunning medieval Islamic village of Al-Qasr. It has been continuously inhabited since prehistoric times and features remarkable Roman temples and mud-brick fortresses."
-        ,link: "https://maps.app.goo.gl/Wz2QTveFzcTcbxYn6"
+        , link: "https://maps.app.goo.gl/Wz2QTveFzcTcbxYn6"
     },
     "kharga": {
         areaTag: `<area target="_blank" alt="" title="" href="https://en.wikipedia.org/wiki/Kharga_Oasis" coords="1,412,208,404,217,255,206,237,209,226,214,220,217,187,208,180,398,111,617,201,617,242,735,224,934,323,936,377,960,373,960,514,548,542,111,494,0,505" shape="poly">`,
@@ -667,18 +740,18 @@ const monumentsData = {
             { label: "STATE", value: "Archeological Site" }
         ],
         desc: "The capital of the New Valley, Kharga was a vital stop on the ancient \"Forty Days Road\" trade route. It is home to the Temple of Hibis, the best-preserved Persian-era temple in Egypt, and the Necropolis of Al-Bagawat, one of the world's oldest Christian cemeteries."
-        ,link: "https://maps.app.goo.gl/n1v4a3ZHezJzmiFX8"
+        , link: "https://maps.app.goo.gl/n1v4a3ZHezJzmiFX8"
     },
     "simbel": {
         areaTag: `<area target="_blank" alt="" title="" href="https://en.wikipedia.org/wiki/Abu_Simbel" coords="-1,242,0,157,59,117,74,92,293,75,318,40,335,34,365,11,404,0,499,1,499,244,188,225,51,232" shape="poly">`,
         stats: [
             { label: "LOCATION", value: "Aswan" },
             { label: "FAMOUS FOR", value: "Solar Alignment" },
-            { label: "FOUNDED", value: "19th Dynasty" },
+            { label: "FOUNDED", value: "19th Period" },
             { label: "STATE", value: "UNESCO Heritage" }
         ],
         desc: "Built by Ramses II, these massive rock-cut temples are a marvel of ancient engineering, famous for the solar alignment phenomenon and their miraculous relocation by UNESCO."
-        ,link: "https://maps.app.goo.gl/3zCiUAf3ABj6s1ns8"
+        , link: "https://maps.app.goo.gl/3zCiUAf3ABj6s1ns8"
     },
     "karnak": {
         areaTag: `<area target="_blank" alt="" title="" href="https://en.wikipedia.org/wiki/Karnak" coords="-1,272,107,268,110,250,135,242,144,241,144,218,157,153,190,149,192,133,214,125,214,116,224,114,238,104,301,94,300,81,361,73,374,86,422,80,447,90,448,101,479,108,490,143,514,137,514,117,524,118,522,92,539,90,543,49,576,44,581,30,605,36,617,19,635,18,674,10,673,390,0,390" shape="poly">`,
@@ -689,7 +762,7 @@ const monumentsData = {
             { label: "STATE", value: "UNESCO Heritage" }
         ],
         desc: "The largest religious complex ever built, Karnak is a vast open-air museum featuring the magnificent Great Hypostyle Hall and its 134 massive sandstone columns."
-        ,link: "https://maps.app.goo.gl/yqdBQKYaeS1v62v68"
+        , link: "https://maps.app.goo.gl/yqdBQKYaeS1v62v68"
     },
     "gem": {
         areaTag: `<area target="_blank" alt="" title="" href="https://en.wikipedia.org/wiki/Grand_Egyptian_Museum" coords="157,-1,431,418,468,457,894,512,894,868,1,867,0,-1" shape="poly">`,
@@ -700,7 +773,7 @@ const monumentsData = {
             { label: "STATE", value: "World's Largest" }
         ],
         desc: "The world's largest archaeological museum dedicated to a single civilization. Located on the Giza plateau, it houses over 100,000 artifacts including the complete Tutankhamun collection."
-        ,link: "https://maps.app.goo.gl/e91d9EaAaVeULaFH6"
+        , link: "https://maps.app.goo.gl/e91d9EaAaVeULaFH6"
     },
     "coptic": {
         areaTag: `<area target="_blank" alt="" title="" href="https://en.wikipedia.org/wiki/Coptic_Museum" coords="1,219,91,218,92,209,110,211,110,195,104,186,106,143,115,151,126,154,131,144,137,149,134,154,141,154,148,153,156,145,168,155,182,145,195,154,207,145,219,155,233,143,242,152,252,140,259,128,267,121,274,117,282,112,289,109,299,105,306,95,314,96,316,105,331,109,339,114,346,119,354,125,358,130,362,134,367,141,371,147,377,152,382,144,396,154,408,143,422,153,432,144,447,153,456,143,471,153,483,143,497,153,509,142,513,181,504,194,506,210,524,210,524,218,696,217,698,183,709,182,715,169,709,182,736,159,736,662,645,660,599,658,384,655,380,661,340,660,325,656,171,657,146,659,125,658,84,661,60,662,-1,664" shape="poly">`,
@@ -711,7 +784,7 @@ const monumentsData = {
             { label: "STATE", value: "Largest Coptic Collection" }
         ],
         desc: "Located within the fortress of Babylon in Old Cairo, this museum holds the largest collection of Egyptian Christian artifacts in the world, beautifully showcasing the fusion of Pharaonic, Graeco-Roman, and Islamic art."
-        ,link: "https://maps.app.goo.gl/CdHb3vsbxuZbx6917"
+        , link: "https://maps.app.goo.gl/CdHb3vsbxuZbx6917"
     },
     "egyptian": {
         areaTag: `<area target="_blank" alt="" title="" href="https://en.wikipedia.org/wiki/Egyptian_Museum" coords="41,248,40,229,44,224,49,220,48,174,44,168,48,162,46,131,40,124,46,122,47,115,74,111,110,104,102,81,113,68,115,59,120,57,127,63,126,69,161,67,162,59,235,50,280,60,280,68,314,74,317,66,322,63,328,66,332,76,393,83,402,69,414,56,425,47,441,38,461,33,482,33,499,37,516,45,526,52,536,60,547,74,551,84,736,58,735,490,658,490" shape="poly">`,
@@ -722,7 +795,7 @@ const monumentsData = {
             { label: "STATE", value: "Historic Monument" }
         ],
         desc: "The historic neoclassic palace in Tahrir Square houses the world's oldest and most extensive collection of pharaonic antiquities, serving as the quintessential guardian of ancient Egyptian history for over a century."
-        ,link: "https://maps.app.goo.gl/km6qGvHjB4eg1wBK7"
+        , link: "https://maps.app.goo.gl/km6qGvHjB4eg1wBK7"
     },
     "islamic": {
         areaTag: `<area target="_blank" alt="" title="" href="https://en.wikipedia.org/wiki/Museum_of_Islamic_Art,_Cairo" coords="939,2,1675,459,2050,179,2700,740,2709,807,2690,825,2733,1142,3181,1425,3191,1473,3178,1489,3282,2058,0,2123,-3,1" shape="poly">`,
@@ -733,7 +806,7 @@ const monumentsData = {
             { label: "STATE", value: "World-Renowned" }
         ],
         desc: "Considered one of the greatest in the world, this museum displays an exceptional collection of rare Islamic artifacts, woodwork, plaster, ceramics, glass, and textiles from all periods of the Islamic world."
-        ,link: "https://maps.app.goo.gl/XndfxfFd5ofTUWrb6"
+        , link: "https://maps.app.goo.gl/XndfxfFd5ofTUWrb6"
     },
     "nmec": {
         areaTag: `<area target="_blank" alt="" title="" href="https://en.wikipedia.org/wiki/National_Museum_of_Egyptian_Civilization" coords="0,475,91,460,189,466,191,441,215,437,214,420,223,420,226,436,273,428,274,325,300,319,316,321,467,181,614,314,659,316,662,463,754,453,759,432,766,432,772,452,943,466,947,447,955,447,959,466,974,468,974,487,984,489,984,521,1119,507,1119,823,912,820,912,803,897,801,886,796,836,744,789,742,733,795,728,800,710,801,710,815,661,810,640,773,619,764,577,763,576,809,297,800,-1,783" shape="poly">`,
@@ -744,7 +817,7 @@ const monumentsData = {
             { label: "STATE", value: "Modern Comprehensive" }
         ],
         desc: "The first museum in the Arab world focusing on the entirety of Egyptian civilization from prehistoric times to the modern day, famously housing the majestic Royal Mummies in a specially designed subterranean hall."
-        ,link: "https://maps.app.goo.gl/ZL35CCMiwLqahrEs8"
+        , link: "https://maps.app.goo.gl/ZL35CCMiwLqahrEs8"
     }
 };
 
