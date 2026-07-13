@@ -141,6 +141,17 @@ body {
     display: flex;
     align-items: center;
     gap: 25px;
+
+    #icon {
+        fill: #F2CA50;
+        width: 37px;
+    }
+
+    #log-out {
+        fill: #F2CA50;
+        width: 30px;
+        cursor: pointer;
+    }
 }
 
 #nav-bar #sign-btn {

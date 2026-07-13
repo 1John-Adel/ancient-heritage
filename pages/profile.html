@@ -7,9 +7,6 @@
     <title>Ancient Heritage | Profile</title>
     <link rel="stylesheet" href="../css/main.css">
     <link rel="stylesheet" href="../css/profile.css">
-    <link rel="stylesheet" href="../css/all.min.css">
-    <script src="https://kit.fontawesome.com/728f1f9039.js" crossorigin="anonymous"></script>
-
 </head>
 
 <body class="body">
@@ -32,24 +29,59 @@
                             d="M480-120q-150 0-255-105T120-480q0-150 105-255t255-105q14 0 27.5 1t26.5 3q-41 29-65.5 75.5T444-660q0 90 63 153t153 63q55 0 101-24.5t75-65.5q2 13 3 26.5t1 27.5q0 150-105 255T480-120Zm0-80q88 0 158-48.5T740-375q-20 5-40 8t-40 3q-123 0-209.5-86.5T364-660q0-20 3-40t8-40q-78 32-126.5 102T200-480q0 116 82 198t198 82Zm-10-270Z" />
                     </svg>
                 </div>
-                <div class="btn" onclick="pop()">
-                    <i class="fa solid fa-arrow-right-from-bracket log"></i>
+                <div id="log-out" onclick="pop()">
+                    <svg viewBox="0 -960 960 960">
+                        <path
+                            d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h280v80H200v560h280v80H200Zm440-160-55-58 102-102H360v-80h327L585-622l55-58 200 200-200 200Z" />
+                    </svg>
                 </div>
-                <a id="sign-btn" href="sign-up.html">Sign up</a>
-                <a id="icon" class="icon" href="profile.html"><i class="fa-solid fa-circle-user"></i></a>
             </div>
         </nav>
     </div>
-    <div id="pop"></div>
+    <div id="pop">
+        <section>
+            <svg viewBox="0 -960 960 960">
+                <path
+                d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h280v80H200v560h280v80H200Zm440-160-55-58 102-102H360v-80h327L585-622l55-58 200 200-200 200Z" />
+            </svg>
+            <h2>Sign out</h2>
+            <h3>are you sure you want to sign out ?</h3>
+            <div>
+                <button id="out">sign out</button>
+                <button id="stay">stay</button>
+            </div>
+        </section>
+    </div>
     <main>
-        <div class="head">
-            <img src="../assets/Logos/Gemini_Generated_Image_fbvl9mfbvl9mfbvl.png" id="profilePic" class="profilePic">
-            <h1 id="userName" class="userName">Name</h1>
-            <h4 id="userEmail" class="userEmail">email</h4>
+        <div id="head">
+            <svg viewBox="0 -960 960 960">
+                <path
+                    d="M234-276q51-39 114-61.5T480-360q69 0 132 22.5T726-276q35-41 54.5-93T800-480q0-133-93.5-226.5T480-800q-133 0-226.5 93.5T160-480q0 59 19.5 111t54.5 93Zm146.5-204.5Q340-521 340-580t40.5-99.5Q421-720 480-720t99.5 40.5Q620-639 620-580t-40.5 99.5Q539-440 480-440t-99.5-40.5ZM480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z" />
+            </svg>
+            <h1>Name</h1>
+            <h4>email</h4>
+            <div>
+                <section id="arc">
+                    <span></span>
+                    <p>saved artifacts</p>
+                </section>
+                <section id="fav">
+                    <span></span>
+                    <p>favorites</p>
+                </section>
+            </div>
         </div>
-        <hr>
-        <div class="fav">
-            <h3 id="art" class="art">favourite artifacts &lt;3</h3>
+        <div id="fav-sec">
+            <section id="top-sec">
+                <p>The Curated Vault</p>
+                <div>
+                    <section></section>
+                    <p>Selected masterpieces of divine antiquity</p>
+                </div>
+            </section>
+            <section id="cards-sec">
+
+            </section>
         </div>
     </main>
     <footer id="footer">

@@ -1,173 +1,101 @@
-let storeData = localStorage.getItem("user")
-let userData = JSON.parse(storeData);
+let userData = JSON.parse(localStorage.getItem("user"));
 
 if (userData.Name) {
-    document.getElementById("userName").innerText = userData.Name;
-    document.getElementById("userEmail").innerText = userData.Email;
+    document.querySelector("#head h1").innerText = userData.Name;
+    document.querySelector("#head h4").innerText = userData.Email;
 }
+
 function removeFromLocal(key, id) {
     let savedItems = JSON.parse(localStorage.getItem(key)) || [];
-    let updatedItems = savedItems.filter(el => el.id !== id);
+    let updatedItems = savedItems.filter(el => el.artifactName !== id);
     localStorage.setItem(key, JSON.stringify(updatedItems));
 }
 
 
 
+let favoriteData = JSON.parse(localStorage.getItem("favorite"));
+let archiveData = JSON.parse(localStorage.getItem("archive"));
 
-
-let Data = localStorage.getItem("favorite");
-let artifactData = JSON.parse(Data);
-
+function update() {   
+    let favoriteData = JSON.parse(localStorage.getItem("favorite"));
+    let archiveData = JSON.parse(localStorage.getItem("archive"));
+    document.querySelector('#arc span').innerText = archiveData?.length || 0;
+    document.querySelector('#fav span').innerText = favoriteData?.length || 0;
+}
 
 if (localStorage.getItem("favorite") === "[]" || localStorage.getItem("favorite") === null) {
-    document.getElementById("art").innerText = "add something you like!";
+    document.getElementById("cards-sec").innerText = "add something you like!";
 }
 else {
-    for (let j of artifactData || []) {
+    for (let j of favoriteData) {
         let card = document.createElement("div");
-        let pic = document.createElement("img");
         let picDiv = document.createElement("div");
+        let pic = document.createElement("img");
+        let material = document.createElement("h5");
         let textContainer = document.createElement("div");
-        let nameInfo = document.createElement("div");
+        let text = document.createElement('div');
+        let period = document.createElement('p');
+        let museum = document.createElement("h6");
         let name = document.createElement("h2");
-        let matrial = document.createElement("h5");
-        let cardFooter = document.createElement("div");
-        let categ = document.createElement("h6");
-        let iconDiv = document.createElement("div");
-        let icon = document.createElement("i");
-        let icon2 = document.createElement("i");
-        let link = document.createElement("a");
-        link.setAttribute("href", "search.html")
-        icon.classList.add("fa-solid", "fa-heart", "heart-icon");
-        icon2.classList.add("fa-solid", "fa-arrow-right", "arrow");
+        let svg = document.createElement('div');
 
-        icon.onclick = () => {
-            removeFromLocal("favorite", j.id);
-            card.remove();
-            let remainingCards = document.querySelectorAll(".container");
-            if (remainingCards.length === 0) {
-                document.getElementById("art").innerText = "add something you like!";
-            }
-        };
-
-        iconDiv.classList.add("iconBox");
-        cardFooter.classList.add("cardFooter");
-        textContainer.classList.add("text");
         picDiv.classList.add("picture");
-        card.classList.add("container");
-        nameInfo.classList.add("nameInfo")
-
-        card.appendChild(picDiv);
-        picDiv.appendChild(pic);
-        card.appendChild(textContainer);
-        nameInfo.appendChild(matrial);
-        nameInfo.appendChild(name);
-        textContainer.appendChild(nameInfo)
-        textContainer.appendChild(cardFooter);
-        cardFooter.appendChild(categ);
-        cardFooter.appendChild(iconDiv);
-        iconDiv.appendChild(icon);
-        link.appendChild(icon2)
-        iconDiv.appendChild(link);
-
-
-
         pic.setAttribute("src", j.image);
+        material.innerText = j.material;
+        picDiv.appendChild(material);
+        picDiv.appendChild(pic);
+
+        textContainer.classList.add("text-cnt");
+        period.innerText = j.Period;
         name.innerText = j.artifactName;
-        matrial.innerText = j.header;
-        categ.innerText = j.category;
+        museum.innerText = j.museum;
+        text.appendChild(period);
+        text.appendChild(name);
+        text.appendChild(museum);
 
+        svg.innerHTML = `
+            <svg viewBox="0 -960 960 960">
+                <path d="m480-120-58-52q-101-91-167-157T150-447.5Q111-500 95.5-544T80-634q0-94 63-157t157-63q52 0 99 22t81 62q34-40 81-62t99-22q94 0 157 63t63 157q0 46-15.5 90T810-447.5Q771-395 705-329T538-172l-58 52Z"/>
+            </svg>
+        `;
+        svg.classList.add('svg');
 
-        document.querySelector(".fav").appendChild(card)
-    }
-}
-    function homeMod() {
-        document.querySelector(".userName").classList.toggle("light");
-        document.querySelector(".userEmail").classList.toggle("light");
-        document.querySelector(".profilePic").classList.toggle("light");
-        let x = document.querySelector(".profilePic");
-        if (x.classList.contains("light")) {
-            x.src = "../assets/Logos/Gemini_Generated_Image_ojby77ojby77ojby.png";
-            x.style.width = "150px";
-            x.style.height = "150px";
-            x.style.transition = "1ms ease-in-out"
-            x.style.border = "2px solid var(--big-text-light)";
-        }
-        else {
-            x.src = "../assets/Logos/Gemini_Generated_Image_fbvl9mfbvl9mfbvl.png";
-        }
-        document.querySelector(".log").classList.toggle("light");
-        document.querySelector(".btn").classList.toggle("light");
-        document.querySelector(".art").classList.toggle("light");
-        document.querySelector("#pop").classList.toggle("light");
-        document.querySelector("hr").classList.toggle("light");
+        textContainer.appendChild(text);
+        textContainer.appendChild(svg);
 
-        let all = document.querySelectorAll(".container");
-        all.forEach(container => {
-            container.classList.toggle("light");
-            container.querySelector(".nameInfo")?.classList.toggle("light");
-            container.querySelector(".cardFooter")?.classList.toggle("light");
-            container.querySelector(".iconBox")?.classList.toggle("light");
-            container.querySelector(".arrow")?.classList.toggle("light");
+        card.classList.add("card");
+        card.appendChild(picDiv);
+        card.appendChild(textContainer);
+
+        document.getElementById("cards-sec").appendChild(card);
+
+        svg.querySelector('svg').addEventListener('click', () => {
+            removeFromLocal('favorite', j.artifactName);
+            update();
+
+            card.remove();
+
+            let remainingCards = document.querySelectorAll("#cards-sec .card");
+            if (remainingCards.length === 0) {
+                document.getElementById("cards-sec").innerText = "add something you like!";
+            }
         });
     }
+}
 
-    function pop() {
-        let box = document.createElement("div");
-        box.classList.add("box");
-        let icony = document.createElement("i");
-        icony.classList.add("fa-solid", "fa-arrow-right-from-bracket", "icony");
-        let heading = document.createElement("h1");
-        heading.classList.add("heading");
-        let warning = document.createElement("h4");
-        warning.classList.add("warn");
-        let hr = document.createElement("div");
-        hr.classList.add("hr");
-        let choice = document.createElement("div");
-        choice.classList.add("choice");
-        let yes = document.createElement("h4");
-        let no = document.createElement("h4");
-        yes.classList.add("yes");
-        no.classList.add("no");
-        document.querySelector("#pop").appendChild(box);
+window.onload = update;
 
+function pop() {
+    document.getElementById('pop').classList.add('out');
 
-        box.appendChild(icony);
-        box.appendChild(heading);
-        box.appendChild(warning);
-        box.appendChild(hr);
-        box.appendChild(choice);
-        choice.appendChild(no);
-        choice.appendChild(yes);
+    document.getElementById('out').onclick = () => {
+        localStorage.removeItem("favorite");
+        localStorage.removeItem("archive");
+        localStorage.removeItem("log");
+        window.location.href = "../index.html";
+    };
 
-        heading.innerText = "Sign Out"
-        warning.innerText = "are you sure you want to sign out ?";
-        yes.innerText = "sign out";
-        no.innerText = "cancel";
-
-
-        document.querySelector(".no" || ".no.light").onclick = () => { document.querySelector("#pop").removeChild(box); };
-        document.querySelector(".yes" || ".yes.light").onclick = () => {
-            let Button = document.getElementById("sign-btn");
-            let Icon = document.getElementById("icon");
-            Icon.style.display = "none";
-            Button.style.display = "block";
-            localStorage.removeItem("favorite");
-            localStorage.removeItem("archive");
-            window.location.href = "../index.html";
-            localStorage.removeItem("log");
-        };
+    document.getElementById('stay').onclick = () =>{
+        document.getElementById('pop').classList.remove('out');
     }
-
-    if (main.classList.contains("light")) {
-        let currenS = localStorage.setItem("homeMod", "light");
-    }
-    else {
-        let currentS = localStorage.setItem("homeMod", "dark");
-    }
-    let savedS = localStorage.getItem("homeMod");
-    let savedMod = localStorage.getItem("theme");
-    if (savedS !== savedMod) {
-        homeMod();
-    }
-
+}

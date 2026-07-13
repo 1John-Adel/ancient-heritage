@@ -1,4 +1,4 @@
-let archiveData = JSON.parse(localStorage.getItem("archive"));
+let archiveData = JSON.parse(localStorage.getItem("archive")) || [];
 
 console.log(archiveData)
 function removeFromLocal(key, id) {
