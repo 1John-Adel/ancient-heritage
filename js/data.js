@@ -820,5 +820,3 @@ const monumentsData = {
         , link: "https://maps.app.goo.gl/ZL35CCMiwLqahrEs8"
     }
 };
-
-// map.on('click', (e) => { const features = map.queryRenderedFeatures(e.point); if (features.length > 0) { console.log("اسم الطبقة المسؤولية:", features[0].layer.id); console.log("الـ source-layer بتاعها:", features[0].layer['source-layer']); } });

@@ -1,11 +1,16 @@
 let show_password = document.querySelectorAll(".show_eye");
 let hide_password = document.querySelectorAll(".hide_eye");
+
 show_password[0].style.display = "inline";
 hide_password[0].style.display = "none";
 show_password[1].style.display = "inline";
 hide_password[1].style.display = "none";
+show_password[2].style.display = "inline";
+hide_password[2].style.display = "none";
+
 let input_pass = document.querySelector("#p");
 let input_Cpass = document.querySelector("#cp");
+let input_signInPass = document.querySelector("#p_in");
 
 function show1(index) {
   show_password[index].style.display = "none";
@@ -29,6 +34,18 @@ function hide2(index) {
   show_password[index].style.display = "inline";
   hide_password[index].style.display = "none";
   input_Cpass.type = "password";
+}
+
+function show3(index) {
+  show_password[index].style.display = "none";
+  hide_password[index].style.display = "inline";
+  input_signInPass.type = "text";
+}
+
+function hide3(index) {
+  show_password[index].style.display = "inline";
+  hide_password[index].style.display = "none";
+  input_signInPass.type = "password";
 }
 
 function NameCheck() {
@@ -61,20 +78,24 @@ function NameCheck() {
 }
 
 function EmailCheck() {
-  let email = document.forms["signUp"]["Email"].value;
-  let error2 = document.getElementsByClassName("error")[1];
+  let isSignIn = document.querySelector("#form").classList.contains("up");
+  let emailValue = isSignIn ? document.forms["signIn"]["Email"].value : document.forms["signUp"]["Email"].value;
+  let inputIndex = isSignIn ? 4 : 1;
+
+  let error2 = document.getElementsByClassName("error")[errorIndex];
   let input = document.getElementsByTagName("input");
-  let emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; //بيتاكد ان الايميل مكتوب صح ان يكون جواه @ . حروف انجلش والامتداد
-  if (email.trim() == "") {
+  let emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  if (emailValue.trim() == "") {
     error2.innerText = "× Email is required";
     error2.style.color = "rgb(182, 28, 28)";
-    input[1].classList.add("E");
+    input[inputIndex].classList.add("E");
     return false;
   }
-  else if (!emailRegex.test(email)) {
+  else if (!emailRegex.test(emailValue)) {
     error2.innerText = "× Not valid email address";
     error2.style.color = "rgb(182, 28, 28)";
-    input[1].classList.add("E");
+    input[inputIndex].classList.add("E");
     return false;
   }
   else {
@@ -84,25 +105,29 @@ function EmailCheck() {
 }
 
 function password() {
-  let password = document.forms["signUp"]["Password"].value;
-  let error3 = document.getElementsByClassName("error")[2];
+  let isSignIn = document.querySelector("#form").classList.contains("up");
+  let passwordValue = isSignIn ? document.forms["signIn"]["Password"].value : document.forms["signUp"]["Password"].value;
+  let errorIndex = isSignIn ? 5 : 2;
+  let inputIndex = isSignIn ? 5 : 2;
+
+  let error3 = document.getElementsByClassName("error")[errorIndex];
   let input = document.getElementsByTagName("input");
-  let passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/; //بيقبل حروف وارقام 
-  if (password.trim() == "") {
+  let passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+
+  if (passwordValue.trim() == "") {
     error3.innerText = "× Password is required";
     error3.style.color = "rgb(182, 28, 28)";
-    input[2].classList.add("E");
+    input[inputIndex].classList.add("E");
     return false;
   }
-  else if (!passwordRegex.test(password)) {
+  else if (!passwordRegex.test(passwordValue)) {
     error3.innerText = "× Password must be 8+ chars with letters and numbers.";
     error3.style.color = "rgb(182, 28, 28)";
-    input[2].classList.add("E");
+    input[inputIndex].classList.add("E");
     return false;
   }
   else {
     error3.innerText = "";
-
     return true;
   }
 }
@@ -133,62 +158,71 @@ function cpassword() {
 function dataForm(event) {
   event.preventDefault();
   let input = document.getElementsByTagName("input");
-  let name = document.forms["signUp"]["Name"].value;
-  let email = document.forms["signUp"]["Email"].value;
-  let pass = document.forms["signUp"]["Password"].value;
+  let isSignIn = document.querySelector("#form").classList.contains("up");
 
-  if (NameCheck() && EmailCheck() && password() && cpassword()) {
-    input[0].classList.add("T");
-    input[1].classList.add("T");
-    input[2].classList.add("T");
-    input[3].classList.add("T");
-    let dateOfUser = {
-      Name: name,
-      Email: email,
-      Password: pass
+  if (!isSignIn) {
+    let name = document.forms["signUp"]["Name"].value;
+    let email = document.forms["signUp"]["Email"].value;
+    let pass = document.forms["signUp"]["Password"].value;
+
+    if (NameCheck() && EmailCheck() && password() && cpassword()) {
+      input[0].classList.add("T");
+      input[1].classList.add("T");
+      input[2].classList.add("T");
+      input[3].classList.add("T");
+      let dateOfUser = {
+        Name: name,
+        Email: email,
+        Password: pass
+      }
+      localStorage.setItem("user", JSON.stringify(dateOfUser));
+      setTimeout(() => {
+        window.location.href = "../pages/profile.html";
+        localStorage.setItem("log", "loged");
+      }, 300);
     }
-    localStorage.setItem("user", JSON.stringify(dateOfUser));
-    setTimeout(() => {
-      window.location.href = "../pages/profile.html";
-      localStorage.setItem("log", "loged");
-    }, 300);
-  }
+  } else {
+    let email = document.forms["signIn"]["Email"].value;
+    let pass = document.forms["signIn"]["Password"].value;
 
+    if (EmailCheck() && password()) {
+      let storedUser = JSON.parse(localStorage.getItem("user"));
+      if (storedUser && storedUser.Email === email && storedUser.Password === pass) {
+        input[4].classList.add("T");
+        input[5].classList.add("T");
+        setTimeout(() => {
+          window.location.href = "../pages/profile.html";
+          localStorage.setItem("log", "loged");
+        }, 300);
+      } else {
+        let errorS = document.querySelector(".errorS");
+        errorS.innerText = "✖ Invalid Email or Password";
+        errorS.style.color = "rgb(182, 28, 28)";
+      }
+    }
+  }
 }
 
 function clearM(index) {
+  let isSignIn = document.querySelector("#form").classList.contains("up");
   let errorM = document.getElementsByClassName("error");
   let input = document.getElementsByTagName("input");
-  input[index].classList.remove("E");
-  errorM[index].innerText = "";
+
+  if (isSignIn) {
+    let adjustedIndex = index === 1 ? 4 : 5;
+    input[adjustedIndex].classList.remove("E");
+    errorM[adjustedIndex].innerText = "";
+    document.querySelector(".errorS").innerText = "";
+  } else {
+    input[index].classList.remove("E");
+    errorM[index].innerText = "";
+  }
 }
 
-function upMod() {
-  const elementsToToggle = [
-    ".a", ".miniTitle", "h1 span", "h1", ".line",
-    ".description", ".left", ".sign-up", "div select", "button",
-    "form div", ".form-link .active",
-    ".form-link .sign",
-  ];
+document.querySelector('#sec1 button').addEventListener('click', () => {
+  document.querySelector("#form").classList.add('up');
+});
 
-  elementsToToggle.forEach(selector => {
-    const el = document.querySelector(selector);
-    if (el) {
-      el.classList.toggle("light");
-    }
-  });
-
-  const groups = ["div label", "div input", ".sign-up p", "div option", , ".Q a", ".pass i"];
-  groups.forEach(selector => {
-    document.querySelectorAll(selector).forEach(el => {
-      el.classList.toggle("light");
-    });
-  });
-}
-if (document.querySelector(".a").classList.contains("light")) {
-  let currentUp = localStorage.setItem("UpMod", "light");
-}
-else {
-  let currentUp = localStorage.setItem("UpMod", "dark");
-}
-
+document.querySelector('#sec2 button').addEventListener('click', () => {
+  document.querySelector("#form").classList.remove('up');
+});

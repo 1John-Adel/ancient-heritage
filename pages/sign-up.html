@@ -7,113 +7,151 @@
     <title>Ancient Heritage | Register</title>
     <link rel="stylesheet" href="../css/main.css">
     <link rel="stylesheet" href="../css/sign-up.css">
-
-    <link rel="stylesheet" href="../css/all.min.css">
-
 </head>
 
 <body>
-    <div id="nav-bar">
-        <nav>
-            <div id="nav-text">
-                ANCIENT HERITAGE
-            </div>
-            <div id="nav-links">
-                <a href="../index.html">Home</a>
-                <a href="archive.html">Archive</a>
-                <a href="museums.html">Museum</a>
-                <a href="map.html">Map</a>
-                <a href="search.html">Search</a>
-            </div>
-            <div id="sign">
-                <div id="mode-btn" onclick="changeMod(); upMod();">
-                    <svg viewBox="0 -960 960 960">
-                        <path
-                            d="M480-120q-150 0-255-105T120-480q0-150 105-255t255-105q14 0 27.5 1t26.5 3q-41 29-65.5 75.5T444-660q0 90 63 153t153 63q55 0 101-24.5t75-65.5q2 13 3 26.5t1 27.5q0 150-105 255T480-120Zm0-80q88 0 158-48.5T740-375q-20 5-40 8t-40 3q-123 0-209.5-86.5T364-660q0-20 3-40t8-40q-78 32-126.5 102T200-480q0 116 82 198t198 82Zm-10-270Z" />
-                    </svg>
-                </div>
-                <a id="sign-btn" href="sign-up.html">Sign up</a>
-                <a id="icon" class="icon" href="profile.html" style="display: none;"><i
-                        class="fa-solid fa-circle-user"></i></a>
-            </div>
-        </nav>
-    </div>
     <main>
-        <div class="a">
-            <section class="right">
-                <p class="miniTitle">PRESERVING CIVILIZATION</p>
-                <h1> <span> Enter the </span> <br> Sanctum of Ages</h1>
-                <div class="line"></div>
-                <p class="description">Access the world's most exclusive digital reliquary.<br>
-                    Secure your identity to unlock provenance records,<br>
-                    high-fidelity artifact scans, and scholarly research.</p>
-            </section>
-            <section class="left">
-                <form name="signUp" class="sign-up" method="post" onsubmit="dataForm(event)">
-                    <div class="form-link">
-                        <a href="sign-in.html" class="sign">SIGN IN</a>
-                        <a href="sign-up.html" class="active">REGISTER</a>
-                    </div>
-                    <div>
-                        <label for="name">*Name:</label>
-                        <input id="name" name="Name" type="text" placeholder="Rahma Mohamed" onfocus="clearM(0)"
+        <section id="form">
+            <form id="sign-up" name="signUp" method="post" onsubmit="dataForm(event)" autocomplete="off">
+                <div class="glow"></div>
+                <div class="top">
+                    <h2>sign up</h2>
+                    <p>Access the curated digital archives of the ancient world.</p>
+                </div>
+                <div class="info">
+                    <div class="form-group">
+                        <label>Name</label>
+                        <input id="name" name="Name" type="text" placeholder="e.g. John Doe" onfocus="clearM(0)"
                             onblur="NameCheck()">
                         <h6 class="error"></h6>
                     </div>
-                    <div>
-                        <label for="e">*EMAIL:</label>
-                        <input id="e" name="Email" type="text" placeholder="ancientheritage@gmail.com"
+
+                    <div class="form-group">
+                        <label>EMAIL</label>
+                        <input id="e" name="Email" type="text" placeholder="john.doe@university.edu.eg"
                             onfocus="clearM(1)" onblur="EmailCheck()">
                         <h6 class="error"></h6>
                     </div>
-                    <div>
-                        <label for="n">NATIONALITY:</label>
-                        <select id="n" class="nationality" name="nationality">
-                            <option value="" disabled selected hidden>Select your nationality</option>
-                            <option value="egyptian">Egyptian</option>
-                            <option value="american">American</option>
-                            <option value="british">British</option>
-                            <option value="saudi">Saudi</option>
-                            <option value="french">French</option>
-                            <option value="others">Others</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label for="p">*PASSWORD:</label>
-                        <div class="pass">
+                </div>
+
+                <div class="form-group">
+                    <label>NATIONALITY</label>
+                    <select id="n" class="nationality" name="nationality">
+                        <option disabled selected hidden>Select your nationality</option>
+                        <option value="egyptian">Egyptian</option>
+                        <option value="american">American</option>
+                        <option value="british">British</option>
+                        <option value="saudi">Saudi</option>
+                        <option value="french">French</option>
+                        <option value="others">Others</option>
+                    </select>
+                </div>
+
+                <div class="pass">
+                    <div class="form-group">
+                        <label>PASSWORD</label>
+                        <div class="pass-wrapper">
                             <input id="p" name="Password" type="password" placeholder="••••••••" onfocus="clearM(2)"
                                 onblur="password()">
-                            <i class="fa-regular fa-eye-slash show_eye" onclick="show1(0)"> </i>
-                            <i class="fa-regular fa-eye hide_eye" onclick="hide1(0)"></i>
+                            <svg height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3" onclick="show1(0)"
+                                class="show_eye">
+                                <path
+                                    d="M607.5-372.5Q660-425 660-500t-52.5-127.5Q555-680 480-680t-127.5 52.5Q300-575 300-500t52.5 127.5Q405-320 480-320t127.5-52.5Zm-204-51Q372-455 372-500t31.5-76.5Q435-608 480-608t76.5 31.5Q588-545 588-500t-31.5 76.5Q525-392 480-392t-76.5-31.5ZM214-281.5Q94-363 40-500q54-137 174-218.5T480-800q146 0 266 81.5T920-500q-54 137-174 218.5T480-200q-146 0-266-81.5ZM480-500Zm207.5 160.5Q782-399 832-500q-50-101-144.5-160.5T480-720q-113 0-207.5 59.5T128-500q50 101 144.5 160.5T480-280q113 0 207.5-59.5Z" />
+                            </svg>
+                            <svg height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3" onclick="hide1(0)"
+                                class="hide_eye">
+                                <path
+                                    d="m644-428-58-58q9-47-27-88t-93-32l-58-58q17-8 34.5-12t37.5-4q75 0 127.5 52.5T660-500q0 20-4 37.5T644-428Zm128 126-58-56q38-29 67.5-63.5T832-500q-50-101-143.5-160.5T480-720q-29 0-57 4t-55 12l-62-62q41-17 84-25.5t90-8.5q151 0 269 83.5T920-500q-23 59-60.5 109.5T772-302Zm20 246L624-222q-35 11-70.5 16.5T480-200q-151 0-269-83.5T40-500q21-53 53-98.5t73-81.5L56-792l56-56 736 736-56 56ZM222-624q-29 26-53 57t-41 67q50 101 143.5 160.5T480-280q20 0 39-2.5t39-5.5l-36-38q-11 3-21 4.5t-21 1.5q-75 0-127.5-52.5T300-500q0-11 1.5-21t4.5-21l-84-82Zm319 93Zm-151 75Z" />
+                            </svg>
                         </div>
                         <h6 class="error"></h6>
                     </div>
-                    <div>
-                        <label for="cp">*CONFIRM PASSWORD:</label>
-                        <div class="pass">
+
+                    <div class="form-group">
+                        <label>CONFIRM PASSWORD</label>
+                        <div class="pass-wrapper">
                             <input id="cp" name="confirmPassword" type="password" placeholder="••••••••"
                                 onfocus="clearM(3)" onblur="cpassword()">
-                            <i class="fa-regular fa-eye-slash show_eye" onclick="show2(1)"> </i>
-                            <i class="fa-regular fa-eye hide_eye" onclick="hide2(1)"></i>
+                            <svg height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3" onclick="show2(1)"
+                                class="show_eye">
+                                <path
+                                    d="M607.5-372.5Q660-425 660-500t-52.5-127.5Q555-680 480-680t-127.5 52.5Q300-575 300-500t52.5 127.5Q405-320 480-320t127.5-52.5Zm-204-51Q372-455 372-500t31.5-76.5Q435-608 480-608t76.5 31.5Q588-545 588-500t-31.5 76.5Q525-392 480-392t-76.5-31.5ZM214-281.5Q94-363 40-500q54-137 174-218.5T480-800q146 0 266 81.5T920-500q-54 137-174 218.5T480-200q-146 0-266-81.5ZM480-500Zm207.5 160.5Q782-399 832-500q-50-101-144.5-160.5T480-720q-113 0-207.5 59.5T128-500q50 101 144.5 160.5T480-280q113 0 207.5-59.5Z" />
+                            </svg>
+                            <svg height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3" onclick="hide2(1)"
+                                class="hide_eye">
+                                <path
+                                    d="m644-428-58-58q9-47-27-88t-93-32l-58-58q17-8 34.5-12t37.5-4q75 0 127.5 52.5T660-500q0 20-4 37.5T644-428Zm128 126-58-56q38-29 67.5-63.5T832-500q-50-101-143.5-160.5T480-720q-29 0-57 4t-55 12l-62-62q41-17 84-25.5t90-8.5q151 0 269 83.5T920-500q-23 59-60.5 109.5T772-302Zm20 246L624-222q-35 11-70.5 16.5T480-200q-151 0-269-83.5T40-500q21-53 53-98.5t73-81.5L56-792l56-56 736 736-56 56ZM222-624q-29 26-53 57t-41 67q50 101 143.5 160.5T480-280q20 0 39-2.5t39-5.5l-36-38q-11 3-21 4.5t-21 1.5q-75 0-127.5-52.5T300-500q0-11 1.5-21t4.5-21l-84-82Zm319 93Zm-151 75Z" />
+                            </svg>
                         </div>
                         <h6 class="error"></h6>
                     </div>
-                    <button type="submit">AUTHORIZE RECISITRATION</button>
-                    <p class="Q">Already have an account? <a href="sign-in.html">Sign in</a></p>
-                    <p class="Q">By continuing, you agree to our<a target="_blank" href="terms.html"> Terms of Use</a>
-                        and<a target="_blank" href="privacy.html"> Privacy & Ethics Policy</a> .</p>
-                </form>
-            </section>
-        </div>
+                </div>
+                <button type="submit">AUTHORIZE REGISTRATION</button>
+                <p>
+                    By continuing, you agree to our <a target="_blank" href="terms.html">Terms of Use</a>
+                    and <a target="_blank" href="privacy.html">Privacy & Ethics Policy</a>.
+                </p>
+            </form>
+
+            <form id="sign-in" name="signIn" method="post" onsubmit="dataForm(event)" autocomplete="off">
+                <h6 class="errorS"></h6>
+                <div class="glow"></div>
+                <div class="top">
+                    <h2>sign in</h2>
+                    <p>Access the curated digital archives of the ancient world.</p>
+                </div>
+                <div class="form-group">
+                    <label>EMAIL</label>
+                    <input id="e_in" name="Email" type="text" placeholder="john.doe@university.edu.eg"
+                        onfocus="clearM(1)" onblur="EmailCheck()">
+                    <h6 class="error"></h6>
+                </div>
+
+                <div class="pass">
+                    <label>PASSWORD</label>
+                    <div class="pass-wrapper">
+                        <input id="p_in" name="Password" type="password" placeholder="••••••••" onfocus="clearM(2)"
+                            onblur="password()">
+                        <svg height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3" onclick="show3(2)"
+                            class="show_eye">
+                            <path
+                                d="M607.5-372.5Q660-425 660-500t-52.5-127.5Q555-680 480-680t-127.5 52.5Q300-575 300-500t52.5 127.5Q405-320 480-320t127.5-52.5Zm-204-51Q372-455 372-500t31.5-76.5Q435-608 480-608t76.5 31.5Q588-545 588-500t-31.5 76.5Q525-392 480-392t-76.5-31.5ZM214-281.5Q94-363 40-500q54-137 174-218.5T480-800q146 0 266 81.5T920-500q-54 137-174 218.5T480-200q-146 0-266-81.5ZM480-500Zm207.5 160.5Q782-399 832-500q-50-101-144.5-160.5T480-720q-113 0-207.5 59.5T128-500q50 101 144.5 160.5T480-280q113 0 207.5-59.5Z" />
+                        </svg>
+                        <svg height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3" onclick="hide3(2)"
+                            class="hide_eye">
+                            <path
+                                d="m644-428-58-58q9-47-27-88t-93-32l-58-58q17-8 34.5-12t37.5-4q75 0 127.5 52.5T660-500q0 20-4 37.5T644-428Zm128 126-58-56q38-29 67.5-63.5T832-500q-50-101-143.5-160.5T480-720q-29 0-57 4t-55 12l-62-62q41-17 84-25.5t90-8.5q151 0 269 83.5T920-500q-23 59-60.5 109.5T772-302Zm20 246L624-222q-35 11-70.5 16.5T480-200q-151 0-269-83.5T40-500q21-53 53-98.5t73-81.5L56-792l56-56 736 736-56 56ZM222-624q-29 26-53 57t-41 67q50 101 143.5 160.5T480-280q20 0 39-2.5t39-5.5l-36-38q-11 3-21 4.5t-21 1.5q-75 0-127.5-52.5T300-500q0-11 1.5-21t4.5-21l-84-82Zm319 93Zm-151 75Z" />
+                        </svg>
+                    </div>
+                    <h6 class="error"></h6>
+                </div>
+                <button type="submit">ENTER THE HERITAGE</button>
+                <p>
+                    By continuing, you agree to our <a target="_blank" href="terms.html">Terms of Use</a>
+                    and <a target="_blank" href="privacy.html">Privacy & Ethics Policy</a>.
+                </p>
+            </form>
+            <div>
+                <section id="sec1">
+                    <p>Hello Friend!</p>
+                    <h2>Begin your journey through the legacy of ages past and secrets rediscovered.</h2>
+                    <h3>Already have an account?</h3>
+                    <button>Sign in</button>
+                </section>
+                <section id="sec2">
+                    <p>welcome back!</p>
+                    <h2>Return to the sanctum of antiquity. Your curatorial oversight ensures the eternal preservation
+                        of our shared human history.</h2>
+                    <h3>Don't have an account?</h3>
+                    <button>Sign up</button>
+                </section>
+            </div>
+        </section>
     </main>
     <footer id="footer">
         <div id="copy-right">
-            <h5>
-                ANCIENT HERITAGE
-            </h5>
-            <p>
-                &copy; 2026 JOHN ADEL. All Rights Reserved.
-            </p>
+            <h5>ANCIENT HERITAGE</h5>
+            <p>&copy; 2026 JOHN ADEL. All Rights Reserved.</p>
         </div>
         <div id="footer-links">
             <a href="https://www.capu.edu.eg/index.php/ar/" target="_blank">University site</a>

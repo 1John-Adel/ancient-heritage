@@ -43,6 +43,23 @@ html, body {
     color: #4e3700;
 }
 
+::-webkit-scrollbar {
+    width: 6px
+}
+
+::-webkit-scrollbar-track {
+    background: #111111;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #E5A93C;
+    height: 25%;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #FFC453; 
+}
+
 main {
     flex: 1;
 }

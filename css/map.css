@@ -5,7 +5,7 @@
     user-select: none;
     min-height: auto;
 
-    &::-webkit-scrollbar {
+    ::-webkit-scrollbar {
         display: none;
     }
 }
@@ -163,7 +163,6 @@ main {
     overflow: hidden;
     cursor: grab;
     transform: translate(1600px, 0px);
-    /* لأن الدالة تجمع 120 + Y أي: 120 + -120 = 0 */
 
     #info-top {
         display: flex;
@@ -302,7 +301,6 @@ main {
     pointer-events: none;
     z-index: 10;
     transform: translate(1585px, 100px);
-    /* بناءً على الحسبة: X + offsetWidth - 15 و 220 + Y */
 }
 
 #scroll-thumb {
