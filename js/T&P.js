@@ -1,30 +1,38 @@
-function T_PMod() {
-    const elementsToToggle = [
-        ".background", "h1"
-    ];
-
-    elementsToToggle.forEach(selector => {
-        const el = document.querySelector(selector);
-        if (el) {
-            el.classList.toggle("light");
+async function download() {
+    const element = document.body; 
+    const viewWidth = window.innerWidth;
+    const viewHeight = element.scrollHeight;
+    
+    const canvas = await html2canvas(element, {
+        scale: 2,
+        useCORS: true,      
+        logging: false,
+        backgroundColor: '#1a1a17', 
+        width: viewWidth,
+        height: viewHeight,
+        windowWidth: viewWidth,
+        windowHeight: viewHeight,
+        scrollX: 0,
+        scrollY: 0,
+        ignoreElements: (el) => {
+            return el.classList.contains('ignore-pdf');
         }
     });
-
-    const groups = ["h3", "p", "li"];
-    groups.forEach(selector => {
-        document.querySelectorAll(selector).forEach(el => {
-            el.classList.toggle("light");
-        });
+    
+    const imgData = canvas.toDataURL('image/png');
+    
+    const { jsPDF } = window.jspdf;
+    
+    const pdfWidth = viewWidth * 0.75;
+    const pdfHeight = viewHeight * 0.75;
+    
+    const pdf = new jsPDF({
+        orientation: pdfWidth > pdfHeight ? 'l' : 'p',
+        unit: 'pt',
+        format: [pdfWidth, pdfHeight]
     });
+    
+    pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight, undefined, 'FAST');
+    
+    pdf.save('Ancient_Heritage.pdf');
 }
-if (document.querySelector(".background").classList.contains("light")) {
-    let currentT_P = localStorage.setItem("t_pMod", "light");
-}
-else {
-    let currentT_P = localStorage.setItem("t_pMod", "dark");
-}
-let savedT_P = localStorage.getItem("t_pMod");
-let savedMod = localStorage.getItem("theme");
-if (savedT_P !== savedMod) {
-    T_PMod();
-} 
