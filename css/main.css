@@ -70,8 +70,8 @@ body {
     min-height: 100vh;
     overflow-x: hidden;
     background: radial-gradient(circle at center,
-            rgba(212, 175, 55, 0.02) 0%,
-            rgba(17, 17, 17, 1) 70%);
+            #d4af3705 0%,
+            #111111 70%);
     background-color: #111111;
     transition: 0.3s;
     background-attachment: fixed;
@@ -185,14 +185,6 @@ body {
     transition: 0.4s;
 }
 
-.icon {
-    display: none;
-    color: #e7c075;
-    font-size: 40px;
-    transition: 0.4s;
-}
-
-
 #footer {
     user-select: none;
     display: flex;
@@ -228,13 +220,14 @@ body {
     gap: 30px;
     align-items: center;
     justify-content: flex-end;
-
+    
     a {
-        color: #a4a2a8;
+        color: #D0C5AF;
         text-decoration: none;
+        font-family: 'Montserrat';
         font-size: 15px;
         transition: 0.4s;
-        letter-spacing: normal;
+        letter-spacing: 1px;
     }
 }
 
@@ -243,7 +236,7 @@ body {
 }
 
 #footer-links a.active {
-    color: #e7c075;
+    color: #F2CA50;
     text-decoration: underline;
     text-underline-offset: 6px;
 }
