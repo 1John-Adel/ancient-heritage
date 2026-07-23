@@ -258,7 +258,7 @@
     border-radius: 15px;
     border: 1px solid #d4af3726;
     overflow: hidden;
-    transition: 0.6s;
+    transition: border 0.6s, box-shadow 0.6s;
 
     img {
         width: 100%;
