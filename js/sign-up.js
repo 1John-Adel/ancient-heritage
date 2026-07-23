@@ -13,7 +13,7 @@ function togglePasswordVisibility(index, isVisible) {
   hide_password[index].style.display = isVisible ? "inline" : "none";
 
   let targetInput = (index === 0) ? input_pass : (index === 1) ? input_Cpass : input_signInPass;
-  targetInput.type = isVisible ? "text" : "password";
+  if (targetInput) targetInput.type = isVisible ? "text" : "password";
 }
 
 function show1(index) { togglePasswordVisibility(index, true); }
@@ -75,24 +75,21 @@ function password() {
   let isSignIn = document.querySelector("#form").classList.contains("up");
   let currentForm = isSignIn ? document.forms["signIn"] : document.forms["signUp"];
   let passwordInput = currentForm["Password"];
+  let errorElement = currentForm.querySelector("h6.pass");
 
-  let errorIndex = isSignIn ? 5 : 2;
-  let errorElement = document.querySelectorAll("h6.pass");
   let passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
   let passwordValue = passwordInput.value;
 
-  errorElement.forEach(error => {
-    if (passwordValue.trim() == "") {
-      showError(error, passwordInput, "× Password is required");
-      return false;
-    } else if (!passwordRegex.test(passwordValue)) {
-      showError(error, passwordInput, "× Password must be 8+ chars with letters and numbers.");
-      return false;
-    } else {
-      clearError(error, passwordInput);
-      return true;
-    }
-  });
+  if (passwordValue.trim() == "") {
+    showError(errorElement, passwordInput, "× Password is required");
+    return false;
+  } else if (!passwordRegex.test(passwordValue)) {
+    showError(errorElement, passwordInput, "× Password must be 8+ chars with letters and numbers.");
+    return false;
+  } else {
+    clearError(errorElement, passwordInput);
+    return true;
+  }
 }
 
 function cpassword() {
@@ -132,18 +129,26 @@ function dataForm(event) {
 
   if (!isSignIn) {
     let signUpForm = document.forms["signUp"];
-    if (NameCheck() && EmailCheck() && password() && cpassword()) {
+    
+    let isNameValid = NameCheck();
+    let isEmailValid = EmailCheck();
+    let isPassValid = password();
+    let isCPassValid = cpassword();
+
+    if (isNameValid && isEmailValid && isPassValid && isCPassValid) {
       signUpForm.querySelectorAll("input").forEach(input => input.classList.add("T"));
 
       let dateOfUser = {
         Name: signUpForm["Name"].value,
         Email: signUpForm["Email"].value,
         Password: signUpForm["Password"].value
-      }
+      };
+      
       localStorage.setItem("user", JSON.stringify(dateOfUser));
+      localStorage.setItem("log", "loged");
+
       setTimeout(() => {
         window.location.href = "../pages/profile.html";
-        localStorage.setItem("log", "loged");
       }, 300);
     }
   } else {
@@ -151,18 +156,25 @@ function dataForm(event) {
     let email = signInForm["Email"].value;
     let pass = signInForm["Password"].value;
 
-    if (EmailCheck() && password()) {
+    let isEmailValid = EmailCheck();
+    let isPassValid = password();
+
+    if (isEmailValid && isPassValid) {
       let storedUser = JSON.parse(localStorage.getItem("user"));
       if (storedUser && storedUser.Email === email && storedUser.Password === pass) {
         signInForm.querySelectorAll("input").forEach(input => input.classList.add("T"));
+        
+        localStorage.setItem("log", "loged");
+        
         setTimeout(() => {
           window.location.href = "../pages/profile.html";
-          localStorage.setItem("log", "loged");
         }, 300);
       } else {
         let errorS = document.querySelector(".errorS");
-        errorS.innerText = "✖ Invalid Email or Password";
-        errorS.style.color = "rgb(182, 28, 28)";
+        if (errorS) {
+          errorS.innerText = "✖ Invalid Email or Password";
+          errorS.style.color = "rgb(182, 28, 28)";
+        }
       }
     }
   }
@@ -175,11 +187,13 @@ function clearM(index) {
 
   if (isSignIn) {
     let adjustedIndex = index === 1 ? 4 : 5;
-    input[adjustedIndex].classList.remove("E");
+    if (input[adjustedIndex]) input[adjustedIndex].classList.remove("E");
     if (errorM[adjustedIndex]) errorM[adjustedIndex].innerText = "";
-    document.querySelector(".errorS").innerText = "";
+    
+    let errorS = document.querySelector(".errorS");
+    if (errorS) errorS.innerText = "";
   } else {
-    input[index].classList.remove("E");
+    if (input[index]) input[index].classList.remove("E");
     if (errorM[index]) errorM[index].innerText = "";
   }
 }
