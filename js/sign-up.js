@@ -167,7 +167,7 @@ function dataForm(event) {
         localStorage.setItem("log", "loged");
         
         setTimeout(() => {
-          window.location.href = "../pages/profile.html";
+          window.location.href = "profile.html";
         }, 300);
       } else {
         let errorS = document.querySelector(".errorS");
