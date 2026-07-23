@@ -11,7 +11,7 @@ let input_signInPass = document.querySelector("#p_in");
 function togglePasswordVisibility(index, isVisible) {
   show_password[index].style.display = isVisible ? "none" : "inline";
   hide_password[index].style.display = isVisible ? "inline" : "none";
-  
+
   let targetInput = (index === 0) ? input_pass : (index === 1) ? input_Cpass : input_signInPass;
   targetInput.type = isVisible ? "text" : "password";
 }
@@ -26,7 +26,7 @@ function hide3(index) { togglePasswordVisibility(index, false); }
 function NameCheck() {
   let form = document.forms["signUp"];
   let nameInput = form["Name"];
-  let error1 = form.querySelector(".error") || document.getElementsByClassName("error")[0];
+  let error1 = form.querySelector("h6.name");
   let englishRegex = /^[A-Za-z ]+$/;
   let name = nameInput.value;
 
@@ -49,8 +49,8 @@ function EmailCheck() {
   let isSignIn = document.querySelector("#form").classList.contains("up");
   let currentForm = isSignIn ? document.forms["signIn"] : document.forms["signUp"];
   let emailInput = currentForm["Email"];
-  
-  let errorElement = currentForm.querySelector(".email-error") || currentForm.querySelector(".error"); 
+
+  let errorElement = currentForm.querySelector("h6.email");
   if (!errorElement) {
     let errorIndex = isSignIn ? 4 : 1;
     errorElement = document.getElementsByClassName("error")[errorIndex];
@@ -75,29 +75,31 @@ function password() {
   let isSignIn = document.querySelector("#form").classList.contains("up");
   let currentForm = isSignIn ? document.forms["signIn"] : document.forms["signUp"];
   let passwordInput = currentForm["Password"];
-  
+
   let errorIndex = isSignIn ? 5 : 2;
-  let errorElement = document.getElementsByClassName("error")[errorIndex];
+  let errorElement = document.querySelectorAll("h6.pass");
   let passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
   let passwordValue = passwordInput.value;
 
-  if (passwordValue.trim() == "") {
-    showError(errorElement, passwordInput, "× Password is required");
-    return false;
-  } else if (!passwordRegex.test(passwordValue)) {
-    showError(errorElement, passwordInput, "× Password must be 8+ chars with letters and numbers.");
-    return false;
-  } else {
-    clearError(errorElement, passwordInput);
-    return true;
-  }
+  errorElement.forEach(error => {
+    if (passwordValue.trim() == "") {
+      showError(error, passwordInput, "× Password is required");
+      return false;
+    } else if (!passwordRegex.test(passwordValue)) {
+      showError(error, passwordInput, "× Password must be 8+ chars with letters and numbers.");
+      return false;
+    } else {
+      clearError(error, passwordInput);
+      return true;
+    }
+  });
 }
 
 function cpassword() {
   let form = document.forms["signUp"];
   let passInput = form["Password"];
   let confirmInput = form["confirmPassword"];
-  let error4 = document.getElementsByClassName("error")[3];
+  let error4 = document.querySelector('h6.Cpass');
 
   if (confirmInput.value.trim() === "") {
     showError(error4, confirmInput, "✖ Confirm password is required");
@@ -174,11 +176,11 @@ function clearM(index) {
   if (isSignIn) {
     let adjustedIndex = index === 1 ? 4 : 5;
     input[adjustedIndex].classList.remove("E");
-    if(errorM[adjustedIndex]) errorM[adjustedIndex].innerText = "";
+    if (errorM[adjustedIndex]) errorM[adjustedIndex].innerText = "";
     document.querySelector(".errorS").innerText = "";
   } else {
     input[index].classList.remove("E");
-    if(errorM[index]) errorM[index].innerText = "";
+    if (errorM[index]) errorM[index].innerText = "";
   }
 }
 

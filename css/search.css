@@ -448,9 +448,10 @@
 
 #scroll-wrapper.empty {
     height: fit-content;
-    
+
     #artifacts-container {
         height: fit-content;
+
         >p {
             display: block !important;
         }
@@ -480,6 +481,8 @@
         width: 40px;
         height: 40px;
         font-size: 16px;
+        font-family: 'Playfair Display';
+        font-variant-numeric: lining-nums;
         cursor: pointer;
         transition: 0.5s;
 

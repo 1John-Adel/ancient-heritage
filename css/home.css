@@ -29,7 +29,7 @@
         color: #E5E2E1;
         font-size: 64px;
     }
-    
+
     #start2 {
         color: #F2CA50;
         font-family: 'Playfair Display';
@@ -41,7 +41,7 @@
     img {
         width: 70%;
         opacity: 0.5;
-        mask-image: radial-gradient(circle, rgba(0, 0, 0, 1) 40%, rgba(0, 0, 0, 0) 80%);
+        mask-image: radial-gradient(65% 75% at center, black 30%, transparent 70%);
     }
 }
 

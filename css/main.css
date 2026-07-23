@@ -29,6 +29,8 @@
 html, body {
     scroll-behavior: smooth;
     scrollbar-gutter: stable;
+    overflow-x: hidden;
+    min-height: 100dvh;
 }
 
 * {
@@ -57,24 +59,35 @@ html, body {
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #FFC453; 
+    background: #FFC453;
 }
 
 main {
     flex: 1;
+    margin-top: 122.6px;
 }
 
 body {
+    position: relative;
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
-    overflow-x: hidden;
-    background: radial-gradient(circle at center,
-            #d4af3705 0%,
-            #111111 70%);
-    background-color: #111111;
-    transition: 0.3s;
-    background-attachment: fixed;
+    background-color: #131313;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40vmin;
+    height: 40vmin;
+    background-color: #e9c17633;
+    border-radius: 50%;
+    opacity: 0.1;
+    box-shadow: 0 0 100px 200px #e9c17633;
+    pointer-events: none;
+    z-index: -1;
 }
 
 #mode-btn {
@@ -92,8 +105,7 @@ body {
 }
 
 #nav-bar {
-    position: sticky;
-    top: 0;
+    position: fixed;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -103,7 +115,7 @@ body {
 }
 
 #nav-bar nav {
-    background-color: #1313138d;
+    background-color: #12121266;
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(20px);
     border-radius: 100px;
@@ -220,7 +232,7 @@ body {
     gap: 30px;
     align-items: center;
     justify-content: flex-end;
-    
+
     a {
         color: #D0C5AF;
         text-decoration: none;
