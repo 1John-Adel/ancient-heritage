@@ -492,7 +492,7 @@
     }
 
     #grid-container>div.play {
-        grid-column: span 1 !important;
+        grid-column: span 2 !important;
         height: auto !important;
         min-height: 420px;
         padding: 20px;
