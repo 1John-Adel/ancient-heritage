@@ -226,3 +226,46 @@ h2.empty {
         fill: #ffe9b0;
     }
 }
+
+@media (max-width: 1024px) {
+    #search {
+        width: 80%;
+    }
+    #quick {
+        width: 80%;
+    }
+    #artifacts-container {
+        width: 90%;
+        flex-wrap: wrap;
+    }
+    .artifacts-col {
+        flex: 1 1 calc(50% - 14px);
+    }
+}
+
+@media (max-width: 768px) {
+    #search {
+        width: 92%;
+    }
+    #quick {
+        width: 92%;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+    #quick div {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+    #artifacts-container {
+        width: 95%;
+        flex-direction: column;
+    }
+    .artifacts-col {
+        flex: 1 1 100%;
+        width: 100%;
+    }
+    .artifact-name p {
+        font-size: 22px;
+    }
+}

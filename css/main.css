@@ -252,3 +252,100 @@ body::before {
     text-decoration: underline;
     text-underline-offset: 6px;
 }
+
+@media (max-width: 1024px) {
+    #nav-bar nav {
+        width: 95%;
+        padding: 12px 25px;
+        margin: 15px auto;
+        flex-wrap: nowrap;
+    }
+    #nav-text {
+        font-size: 20px;
+    }
+    #nav-links {
+        gap: 20px;
+        flex-wrap: nowrap;
+    }
+    #nav-links a {
+        font-size: 13px;
+        letter-spacing: 0.1em;
+    }
+    #sign {
+        gap: 15px;
+        flex-wrap: nowrap;
+    }
+    #nav-bar #sign-btn {
+        font-size: 13px;
+        padding: 8px 18px;
+    }
+    main {
+        margin-top: 105px;
+    }
+}
+
+@media (max-width: 768px) {
+    #nav-bar nav {
+        width: 94%;
+        margin: 10px auto;
+        padding: 15px;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        border-radius: 20px;
+        gap: 15px;
+    }
+    #nav-text {
+        width: 100%;
+        text-align: center;
+        font-size: 18px;
+        letter-spacing: 0.08em;
+    }
+    #nav-links {
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 10px 16px;
+        border-top: 0.5px solid rgba(212, 175, 55, 0.2);
+        border-bottom: 0.5px solid rgba(212, 175, 55, 0.2);
+        padding: 10px 0;
+    }
+    #nav-links a {
+        font-size: 11px;
+        letter-spacing: 0.08em;
+    }
+    #sign {
+        width: 100%;
+        justify-content: center;
+        display: flex;
+        gap: 15px;
+    }
+    #sign #sign-btn {
+        font-size: 11px;
+        padding: 6px 16px;
+        border-radius: 20px;
+    }
+    #sign #icon {
+        width: 26px;
+    }
+    #sign #mode-btn svg {
+        width: 22px;
+        height: 22px;
+    }
+    main {
+        margin-top: 195px;
+    }
+}
+
+@media (max-width: 768px) {
+    #footer {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+        padding: 30px 20px;
+        height: auto;
+    }
+    #footer-links {
+        justify-content: center;
+    }
+}

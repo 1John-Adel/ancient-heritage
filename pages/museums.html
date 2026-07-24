@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -56,8 +56,8 @@
             <div id="cards">
                 <section id="grid-container">
                     <div id="grand" class="play" onclick="play(this.id,event)">
-                        <video muted loop preload playsinline src="../assets/videos/Grand Egyptian Museum.mp4"
-                            controlsList="nodownload" no-download></video>
+                        <video muted loop preload="metadata" playsinline src="../assets/videos/Grand Egyptian Museum.mp4"
+                            controlsList="nodownload"></video>
                         <div class="card-title">
                             <svg viewBox="0 0 36 36" onclick="toggleIcon()">
                                 <path id="path" d="M 12.75 4.5 L 9.75 4.5 C 9.15 4.5 8.58 4.73 8.15 5.15 C 7.73
@@ -81,8 +81,8 @@
                     </div>
 
                     <div id="coptic" onclick="play(this.id,event)">
-                        <video muted loop preload="auto" playsinline src="../assets/videos/The Coptic Museum.mp4"
-                            controlsList="nodownload" no-download></video>
+                        <video muted loop playsinline src="../assets/videos/The Coptic Museum.mp4"
+                            controlsList="nodownload"></video>
                         <div class="card-title">
                             <svg viewBox="0 0 36 36" onclick="toggleIcon()">
                                 <path id="path" d="M 12.75 4.5 L 9.75 4.5 C 9.15 4.5 8.58 4.73 8.15 5.15 C 7.73
@@ -106,8 +106,8 @@
                     </div>
 
                     <div id="egyptian" onclick="play(this.id,event)">
-                        <video muted loop preload playsinline src="../assets/videos/Egyptian Museum.mp4"
-                            controlsList="nodownload" no-download></video>
+                        <video muted loop playsinline src="../assets/videos/Egyptian Museum.mp4"
+                            controlsList="nodownload"></video>
                         <div class="card-title">
                             <svg viewBox="0 0 36 36" onclick="toggleIcon()">
                                 <path id="path" d="M 12.75 4.5 L 9.75 4.5 C 9.15 4.5 8.58 4.73 8.15 5.15 C 7.73
@@ -130,8 +130,8 @@
                     </div>
 
                     <div id="islamic" onclick="play(this.id,event)">
-                        <video muted loop preload playsinline src="../assets/videos/Islamic Art Museum.mp4"
-                            controlsList="nodownload" no-download></video>
+                        <video muted loop playsinline src="../assets/videos/Islamic Art Museum.mp4"
+                            controlsList="nodownload"></video>
                         <div class="card-title">
                             <svg viewBox="0 0 36 36" onclick="toggleIcon()">
                                 <path id="path" d="M 12.75 4.5 L 9.75 4.5 C 9.15 4.5 8.58 4.73 8.15 5.15 C 7.73
@@ -154,8 +154,8 @@
                     </div>
 
                     <div id="national" onclick="play(this.id,event)">
-                        <video muted loop preload playsinline src="../assets/videos/The National Museum.mp4"
-                            controlsList="nodownload" no-download></video>
+                        <video muted loop playsinline src="../assets/videos/The National Museum.mp4"
+                            controlsList="nodownload"></video>
                         <div class="card-title">
                             <svg viewBox="0 0 36 36" onclick="toggleIcon()">
                                 <path id="path" d="M 12.75 4.5 L 9.75 4.5 C 9.15 4.5 8.58 4.73 8.15 5.15 C 7.73
@@ -187,102 +187,101 @@
                 <span>Curation & Logistics</span>
                 <h2>Comparative Guide</h2>
             </div>
-            <table>
-                <thead>
-                    <tr>
-                        <th rowspan="2">MUSEUM NAME</th>
-                        <th rowspan="2">LOCATION</th>
-                        <th colspan="2">Egyptian (EGP)</th>
-                        <th colspan="2">Foreign (EGP)</th>
-                        <th rowspan="2">OPINING HOURS</th>
-                        <th rowspan="2">STATE</th>
-                        <th rowspan="2">PROCEDURES</th>
-                    </tr>
-                    <tr>
-                        <th>Standard</th>
-                        <th>Student</th>
-                        <th>Standard</th>
-                        <th>Student</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Grand Egyptian Museum</td>
-                        <td>Giza Pyramids</td>
-                        <td>200EGP</td>
-                        <td>100EGP</td>
-                        <td>1500EGP</td>
-                        <td>750EGP</td>
-                        <td>09:00 - 18:00</td>
-                        <td>
-                            <div class="state grand"></div>
-                        </td>
-                        <td>Online Booking</td>
-                    </tr>
-                    <tr>
-                        <td>Egyptian Museum</td>
-                        <td>Tahrir Square</td>
-                        <td>30EGP</td>
-                        <td>10EGP</td>
-                        <td>550EGP</td>
-                        <td>275EGP</td>
-                        <td>09:00 - 17:00</td>
-                        <td>
-                            <div class="state"></div>
-                        </td>
-                        <td>No Flash Photo</td>
-                    </tr>
-
-                    <tr>
-                        <td>Islamic Art Museum</td>
-                        <td>Bab Al-Khalq</td>
-                        <td>20EGP</td>
-                        <td>10EGP</td>
-                        <td>340EGP</td>
-                        <td>170EGP</td>
-                        <td>09:00 - 17:00</td>
-                        <td>
-                            <div class="state"></div>
-                        </td>
-                        <td>Guided Tours</td>
-                    </tr>
-
-                    <tr>
-                        <td>The Coptic Museum</td>
-                        <td>Old Cairo</td>
-                        <td>20EGP</td>
-                        <td>10EGP</td>
-                        <td>280EGP</td>
-                        <td>140EGP</td>
-                        <td>09:00 - 17:00</td>
-                        <td>
-                            <div class="state"></div>
-                        </td>
-                        <td>Silent Mode</td>
-                    </tr>
-
-                    <tr>
-                        <td>NMEC</td>
-                        <td>Fustat</td>
-                        <td>90EGP</td>
-                        <td>45EGP</td>
-                        <td>550EGP</td>
-                        <td>300EGP</td>
-                        <td>09:00 - 17:00</td>
-                        <td>
-                            <div class="state"></div>
-                        </td>
-                        <td>ID Required</td>
-                    </tr>
-                </tbody>
-                <tfoot>
-                    <tr>
-                        <td colspan="6"> The total number of museums shown so far is 5</td>
-                        <td colspan="3"><a target="_blank" href="https://egymonuments.gov.eg/en/museums"> More
-                                museums</a></td>
-                    </tr>
-                </tfoot>
-            </table>
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th rowspan="2">MUSEUM NAME</th>
+                            <th rowspan="2">LOCATION</th>
+                            <th colspan="2">Egyptian (EGP)</th>
+                            <th colspan="2">Foreign (EGP)</th>
+                            <th rowspan="2">OPENING HOURS</th>
+                            <th rowspan="2">STATE</th>
+                            <th rowspan="2">PROCEDURES</th>
+                        </tr>
+                        <tr>
+                            <th>Standard</th>
+                            <th>Student</th>
+                            <th>Standard</th>
+                            <th>Student</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Grand Egyptian Museum</td>
+                            <td>Giza Pyramids</td>
+                            <td>200EGP</td>
+                            <td>100EGP</td>
+                            <td>1500EGP</td>
+                            <td>750EGP</td>
+                            <td>09:00 - 18:00</td>
+                            <td>
+                                <span class="state open">OPEN</span>
+                            </td>
+                            <td>Online Booking</td>
+                        </tr>
+                        <tr>
+                            <td>Egyptian Museum</td>
+                            <td>Tahrir Square</td>
+                            <td>30EGP</td>
+                            <td>10EGP</td>
+                            <td>550EGP</td>
+                            <td>275EGP</td>
+                            <td>09:00 - 17:00</td>
+                            <td>
+                                <span class="state open">OPEN</span>
+                            </td>
+                            <td>No Flash Photo</td>
+                        </tr>
+                        <tr>
+                            <td>Islamic Art Museum</td>
+                            <td>Bab Al-Khalq</td>
+                            <td>20EGP</td>
+                            <td>10EGP</td>
+                            <td>340EGP</td>
+                            <td>170EGP</td>
+                            <td>09:00 - 17:00</td>
+                            <td>
+                                <span class="state open">OPEN</span>
+                            </td>
+                            <td>Guided Tours</td>
+                        </tr>
+                        <tr>
+                            <td>The Coptic Museum</td>
+                            <td>Old Cairo</td>
+                            <td>20EGP</td>
+                            <td>10EGP</td>
+                            <td>280EGP</td>
+                            <td>140EGP</td>
+                            <td>09:00 - 17:00</td>
+                            <td>
+                                <span class="state open">OPEN</span>
+                            </td>
+                            <td>Silent Mode</td>
+                        </tr>
+                        <tr>
+                            <td>NMEC</td>
+                            <td>Fustat</td>
+                            <td>90EGP</td>
+                            <td>45EGP</td>
+                            <td>550EGP</td>
+                            <td>300EGP</td>
+                            <td>09:00 - 17:00</td>
+                            <td>
+                                <span class="state open">OPEN</span>
+                            </td>
+                            <td>ID Required</td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="6"> The total number of museums shown so far is 5</td>
+                            <td colspan="3"><a target="_blank" href="https://egymonuments.gov.eg/en/museums"> More
+                                    museums</a></td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
         </div>
     </main>
     <footer id="footer">
