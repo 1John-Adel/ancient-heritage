@@ -153,6 +153,7 @@ main {
 
     #sign-in {
         scale: 0;
+
         >h6 {
             position: absolute;
         }
@@ -163,6 +164,7 @@ main {
 
             .pass-wrapper {
                 display: flex;
+
                 input {
                     flex: 1;
                 }
@@ -271,5 +273,128 @@ main {
 
     #sign-in {
         scale: 1;
+    }
+}
+
+@media (max-width: 900px) {
+    main {
+        padding: 20px 10px;
+        box-sizing: border-box;
+    }
+
+    #form {
+        width: 100%;
+        max-width: 480px;
+        flex-direction: column;
+        margin: 0;
+        overflow: hidden;
+        position: relative;
+        height: fit-content;
+
+        form {
+            width: 100%;
+            padding: 0 40px;
+            gap: 30px;
+            scale: 1 !important;
+            height: fit-content;
+
+            .top h2 {
+                font-size: 33px;
+            }
+
+            .info, .pass {
+                flex-direction: column;
+                gap: 20px;
+
+                .pass-wrapper {
+                    input {
+                        width: 90%;
+                    }
+                }
+            }
+        }
+
+        #sign-up {
+            top: 0;
+        }
+
+        #sign-in {
+            transform: translateY(-85%);
+            scale: 0 !important;
+
+            >h6 {
+                position: relative;
+            }
+
+            .pass {
+                flex-direction: column;
+                gap: 0;
+            }
+        }
+
+        >div {
+            width: 100%;
+            height: 40%;
+            bottom: 0;
+            left: 0 !important;
+
+            section {
+                position: absolute;
+                width: 100%;
+                padding: 0 40px;
+                box-sizing: border-box;
+                left: 0;
+                top: 50%;
+                transform: translateY(-50%);
+
+                p {
+                    font-size: 28px;
+                }
+
+                button {
+                    padding: 15px 40px;
+                }
+            }
+
+            #sec1 {
+                top: 50%;
+                transform: translateY(-50%);
+            }
+
+            #sec2 {
+                position: absolute;
+                top: 150%;
+                transform: translateY(-50%);
+                left: 0 !important;
+                padding: 0 40px;
+            }
+        }
+    }
+
+    #form.up {
+        height: 170vh;
+
+        >div {
+            bottom: calc(60%);
+
+            #sec1 {
+                top: -50% !important;
+                transform: translateY(-50%);
+            }
+
+            #sec2 {
+                top: 50% !important;
+                transform: translateY(-50%);
+                left: 0 !important;
+            }
+        }
+
+        #sign-up {
+            scale: 0 !important;
+        }
+
+        #sign-in {
+            scale: 1 !important;
+        }
     }
 }

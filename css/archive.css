@@ -87,7 +87,7 @@ main.empty {
         section:hover {
             color: #ffe299;
         }
-        
+
         section.active {
             color: #ffe299;
             background-color: #d4af370d;
@@ -231,13 +231,16 @@ h2.empty {
     #search {
         width: 80%;
     }
+
     #quick {
         width: 80%;
     }
+
     #artifacts-container {
         width: 90%;
         flex-wrap: wrap;
     }
+
     .artifacts-col {
         flex: 1 1 calc(50% - 14px);
     }
@@ -245,27 +248,59 @@ h2.empty {
 
 @media (max-width: 768px) {
     #search {
-        width: 92%;
+        width: 90%;
+
+        #search-bar {
+            font-size: 14px !important;
+            padding: 12px;
+            padding-right: 40px;
+        }
+
+        svg {
+            width: 24px;
+            height: 28px;
+            margin-left: -35px;
+        }
     }
+
     #quick {
-        width: 92%;
+        width: 90%;
         flex-direction: column;
-        align-items: flex-start;
         gap: 12px;
+        align-items: flex-start;
+
+        div {
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px;
+
+            section {
+                font-size: 11px;
+                padding: 5px 12px;
+            }
+        }
     }
-    #quick div {
-        flex-wrap: wrap;
-        gap: 10px;
-    }
+
     #artifacts-container {
-        width: 95%;
+        width: 94%;
         flex-direction: column;
+        padding: 0;
     }
+
     .artifacts-col {
         flex: 1 1 100%;
         width: 100%;
     }
-    .artifact-name p {
-        font-size: 22px;
+
+    .artifact-name {
+        p {
+            font-size: 22px;
+        }
+    }
+
+    h2.empty {
+        font-size: 18px;
+        text-align: center;
+        padding: 0 20px;
     }
 }

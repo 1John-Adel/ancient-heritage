@@ -364,21 +364,28 @@
 
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1300px) {
     #container {
         flex-direction: column;
         text-align: center;
         gap: 30px;
         padding: 0 30px;
         margin-top: 30px;
-    }
 
-    #pic1, #pic2 {
-        display: none;
-    }
+        #pic1, #pic2 {
+            display: none;
+        }
 
-    #container img {
-        width: 100%;
+        img {
+            width: 100%;
+        }
+
+        #container-h1 {
+            p {
+                max-width: 600px;
+                margin: 0 auto;
+            }
+        }
     }
 
     #history-container {
@@ -391,19 +398,31 @@
         flex-direction: column;
         align-items: center;
         gap: 40px;
+
+        #egyptian img, #islamic img, #gem img {
+            width: 100% !important;
+            max-width: 500px;
+            height: auto;
+        }
+
+        #islamic, #gem {
+            margin-top: 0 !important;
+            margin-left: 0 !important;
+        }
     }
 
-    #egyptian img, #islamic img, #gem img {
-        width: 100% !important;
-        max-width: 500px;
-        height: auto;
+    #start1, #start2 {
+        font-size: 48px !important;
     }
 
-    #islamic, #gem {
-        margin-top: 0 !important;
-        margin-left: 0 !important;
+    #top-sec {
+        flex-direction: column;
+        gap: 20px;
+        align-items: flex-start;
     }
+}
 
+@media (max-width: 1024px) {
     #titleFeatures {
         padding: 0 40px;
     }
@@ -412,6 +431,7 @@
         flex-direction: column;
         align-items: center;
         padding: 0 40px;
+        gap: 30px;
     }
 
     .card {
@@ -422,35 +442,21 @@
     #homeEnd {
         padding: 0 40px;
         text-align: center;
-    }
 
-    #homeEnd p {
-        width: 90%;
-    }
+        p {
+            width: 90%;
+        }
 
-    #homeEnd h1 {
-        font-size: 42px;
-        text-align: center;
-    }
-
-    #start1, #start2 {
-        font-size: 42px !important;
-    }
-
-    #top-sec {
-        flex-direction: column;
-        gap: 20px;
-        align-items: flex-start;
+        h1 {
+            font-size: 42px;
+            text-align: center;
+        }
     }
 }
 
 @media (max-width: 768px) {
     #start1, #start2 {
         font-size: 32px !important;
-    }
-
-    #homeEnd h1 {
-        font-size: 32px;
     }
 
     #titleFeatures {
@@ -462,19 +468,73 @@
     #homeEnd {
         margin-top: 100px;
         padding: 0 16px;
+
+        h1 {
+            font-size: 32px;
+        }
     }
 
     #container {
         padding: 0 32px;
     }
 
+    #top-sec {
+        align-items: center !important;
+        text-align: center !important;
+
+        p {
+            font-size: 30px !important;
+        }
+
+        div {
+            margin: auto !important;
+        }
+    }
+
     #history-container {
         width: 96%;
-        padding: 0 32px;
+        padding: 0 16px;
+        text-align: center;
+
+        .location {
+            justify-content: center !important;
+            margin-top: 15px;
+        }
+    }
+
+    #pics-sec {
+        div {
+            width: 100%;
+            max-width: 500px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            section {
+                font-size: 22px !important;
+                display: grid !important;
+                grid-template-columns: 1fr auto;
+                align-items: center;
+                width: 100%;
+                gap: 10px;
+
+                p:first-child {
+                    text-align: left;
+                }
+
+                .line {
+                    display: none !important;
+                }
+
+                .number {
+                    text-align: right;
+                }
+            }
+        }
     }
 
     #feature {
-        padding: 0 32px;
+        padding: 0 16px;
     }
 
     .card {

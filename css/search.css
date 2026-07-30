@@ -506,3 +506,148 @@
         display: none;
     }
 }
+
+@media (max-width: 1024px) {
+    #search-sec {
+        padding: 0 40px;
+
+        #search {
+            width: 85%;
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    #search-sec {
+        padding: 0 16px;
+
+        #search {
+            width: 95%;
+            margin-top: 20px;
+
+            input {
+                height: 50px;
+                font-size: 11px;
+                padding: 12px 36px 12px 42px;
+            }
+
+            button {
+                width: 20%;
+                padding: 5px 0;
+                font-size: 8px;
+                font-weight: 700;
+                right: 8px;
+            }
+
+            svg {
+                width: 18px;
+                height: 18px;
+                left: 14px;
+            }
+        }
+
+        #filters {
+            width: 100%;
+
+            div {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 10px;
+
+                button {
+                    padding: 8px 16px;
+                    font-size: 11px;
+                }
+            }
+        }
+    }
+
+    #cards-sec {
+        width: 92%;
+
+        #top {
+            gap: 15px;
+            margin-bottom: 30px;
+
+            h2 {
+                font-size: 24px !important;
+            }
+
+            #cards-show {
+                width: 130px !important;
+            }
+        }
+    }
+
+    #scroll-wrapper {
+        width: 100% !important;
+
+        #artifacts-container {
+            height: 870px !important;
+            width: max-content !important;
+            display: flex !important;
+            flex-direction: column !important;
+            flex-wrap: wrap !important;
+            align-content: flex-start !important;
+            gap: 20px !important;
+
+            .card {
+                width: 335px !important;
+
+                img {
+                    height: 200px !important;
+                }
+            }
+        }
+    }
+
+    #scroll-wrapper.list {
+        width: 92% !important;
+
+        #artifacts-container {
+            height: 1100px !important;
+            width: max-content !important;
+
+            .card {
+                width: 300px !important;
+                max-width: 300px !important;
+                flex-direction: column !important;
+                height: auto !important;
+
+                img {
+                    width: 100% !important;
+                    height: 160px !important;
+                }
+
+                .artifact-material {
+                    left: auto !important;
+                    margin: 15px !important;
+                }
+
+                .text-container {
+                    flex-direction: column !important;
+
+                    .card-footer {
+                        flex-direction: row !important;
+                        border-top: 1px solid #4d46354d !important;
+                        padding-top: 16px !important;
+                        margin-top: 16px !important;
+
+                        div {
+                            width: auto !important;
+                            display: flex !important;
+                            gap: 15px !important;
+                        }
+                    }
+
+                    a {
+                        background-color: transparent !important;
+                        color: #ffe9b0 !important;
+                        padding: 0 !important;
+                        border-radius: 0 !important;
+                    }
+                }
+            }
+        }
+    }
+}

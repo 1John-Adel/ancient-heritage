@@ -390,4 +390,12 @@ window.addEventListener("DOMContentLoaded", () => {
     }
 });
 
+function handleOrientationFix() {
+    if (typeof map !== 'undefined') {
+        setTimeout(() => map.resize(), 350);
+    }
+}
+
+window.addEventListener('resize', handleOrientationFix);
+window.addEventListener('orientationchange', handleOrientationFix);
 // map.on('click', (e) => { const features = map.queryRenderedFeatures(e.point); if (features.length > 0) { console.log("اسم الطبقة المسؤولية:", features[0].layer.id); console.log("الـ source-layer بتاعها:", features[0].layer['source-layer']); } });
