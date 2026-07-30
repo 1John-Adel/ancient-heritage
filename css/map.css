@@ -14,6 +14,9 @@ main {
     margin-top: 0;
 }
 
+#nav-toggle-btn {
+    display: none;
+}
 
 #scale-btns {
     position: absolute;
@@ -313,25 +316,103 @@ main {
 }
 
 @media screen and (max-width: 768px) and (orientation: portrait) {
-  html, body {
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    overflow: hidden;
-  }
+    html, body {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        left: -20vw;
+        overflow: hidden;
+    }
 
-  body {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vh;
-    height: 100vw;
-    transform-origin: top left;
-    transform: rotate(90deg) translateY(-90%);
-  }
+    body {
+        margin: 0;
+        overflow: hidden;
+    }
 
-  #map {
-    width: 100% !important;
-    height: 100% !important;
-  }
+    #app {
+        position: fixed;
+        top: 0;
+        left: 0;
+
+        width: 100vh;
+        height: 100vw;
+
+        transform-origin: top left;
+        transform: rotate(90deg) translateY(-100%);
+    }
+
+    #nav-bar {
+        nav {
+            position: fixed;
+            top: 15px;
+            left: 15px;
+            display: flex;
+            align-items: center;
+            width: 42px;
+            height: 42px;
+            padding: 0;
+            overflow: hidden;
+            border-radius: 50px;
+            background: #121411e6;
+            border: 1px solid #f2ca504d;
+            box-shadow: 0 8px 20px #00000059;
+            transition: width 0.5s ease, height 0.5s ease, border-radius 0.5s ease;
+            z-index: 20;
+        }
+
+        nav>*:not(#nav-toggle-btn) {
+            opacity: 0;
+            pointer-events: none;
+            white-space: nowrap;
+            transition: opacity 0.25s ease;
+        }
+    }
+
+    #nav-bar.expanded {
+        nav {
+            width: 85vh;
+            height: fit-content;
+            flex-wrap: wrap;
+            border-radius: 20px;
+            padding: 15px 20px;
+        }
+
+        nav>*:not(#nav-toggle-btn) {
+            opacity: 1;
+            pointer-events: auto;
+            transition: opacity 0.3s ease 0.2s;
+        }
+
+
+        #nav-toggle-btn {
+            svg {
+                transform: rotate(360deg);
+            }
+        }
+    }
+
+    #nav-toggle-btn {
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 42px;
+        height: 42px;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+
+        svg {
+            width: 18px;
+            height: 18px;
+            fill: #F2CA50;
+            transition: transform 0.4s;
+            transform: rotate(180deg);
+        }
+    }
+
+    #nav-links {
+        display: flex;
+        gap: 15px;
+    }
 }

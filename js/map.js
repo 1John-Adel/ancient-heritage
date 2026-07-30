@@ -11,16 +11,24 @@ let isDragging = false;
 let startX = 0;
 let startY = 0;
 
-let currentX = 1600;
-let currentY = -120;
+// الحصول على موضع الإخفاء الديناميكي خارج الشاشة
+function getHiddenX() {
+    return window.innerWidth + 100;
+}
 
-let totalX = currentX;
-let totalY = currentY;
+// الحصول على موضع الظهور الديناميكي داخل الشاشة
+function getVisibleX() {
+    const cardWidth = myWindow ? myWindow.offsetWidth : 390;
+    return Math.max(20, window.innerWidth - cardWidth - 50);
+}
+
+let currentX = getHiddenX();
+let currentY = -120;
 
 let scrollY = 0;
 const frameHeight = 500;
 
-function updateWindowPosition(X = 1600, Y = -120, triggerTransition = true) {
+function updateWindowPosition(X = getHiddenX(), Y = -120, triggerTransition = true) {
     if (!myWindow) return { targetX: X, targetY: Y };
 
     if (triggerTransition) {
@@ -54,17 +62,19 @@ function updateWindowPosition(X = 1600, Y = -120, triggerTransition = true) {
         const cardHeight = myWindow.offsetHeight;
         const maxScroll = -(cardHeight - frameHeight);
 
-        scrollBar.style.display = "block";
-        const scrollRatio = scrollY / maxScroll;
-        const availableSpace = 120 - 40;
-
-        const thumbTop = scrollRatio * availableSpace;
-        scrollThumb.style.transform = `translateY(${thumbTop}px)`;
+        scrollBar.style.display = cardHeight > frameHeight ? "block" : "none";
+        if (cardHeight > frameHeight) {
+            const scrollRatio = scrollY / maxScroll;
+            const availableSpace = 120 - 40;
+            const thumbTop = scrollRatio * availableSpace;
+            scrollThumb.style.transform = `translateY(${thumbTop}px)`;
+        }
     }
 
     return { targetX, targetY };
 }
 
+// تهيئة MapLibre GL
 maplibregl.setRTLTextPlugin(
     'https://unpkg.com/@mapbox/mapbox-gl-rtl-text@0.2.3/mapbox-gl-rtl-text.js',
     lazyLoadError => { if (lazyLoadError) console.error(lazyLoadError); },
@@ -97,34 +107,45 @@ function getMapPoint(e) {
     );
 }
 
+function isRotatedMode() {
+    return window.matchMedia("(max-width: 768px) and (orientation: portrait)").matches;
+}
+
+// التحكم في الزوم والتحريك بعجلة الماوس
 document.getElementById('map').addEventListener('wheel', (e) => {
     e.preventDefault();
 
     if (e.ctrlKey) {
         const mapPoint = getMapPoint(e);
         const zoomFactor = -e.deltaY * 0.008;
-        let targetZoom = map.getZoom() + zoomFactor;
-
-        targetZoom = Math.max(6, Math.min(targetZoom, 15));
+        let targetZoom = Math.max(6, Math.min(map.getZoom() + zoomFactor, 15));
 
         map.zoomTo(targetZoom, {
             around: map.unproject(mapPoint),
             duration: 0
         });
-
         return;
     }
 
-    const sensitivity = 0.009 / Math.pow(2, map.getZoom() - 6);
+    const sensitivity = 0.009 / (2 ** (map.getZoom() - 6));
     const currentCenter = map.getCenter();
 
-    const newLng = currentCenter.lng + (e.deltaX * sensitivity);
-    const newLat = currentCenter.lat - (e.deltaY * sensitivity);
+    let dx = e.deltaX;
+    let dy = e.deltaY;
+
+    if (isRotatedMode()) {
+        const rotatedDx = dy;
+        const rotatedDy = -dx;
+        dx = rotatedDx;
+        dy = rotatedDy;
+    }
 
     map.jumpTo({
-        center: [newLng, newLat]
+        center: [
+            currentCenter.lng + dx * sensitivity,
+            currentCenter.lat - dy * sensitivity
+        ]
     });
-
 }, { passive: false });
 
 function handleMarkerClick(loc) {
@@ -158,7 +179,6 @@ function handleMarkerClick(loc) {
 
 function selected(id, name) {
     let infoCnt = document.getElementById("information-container");
-
     let img = document.getElementById('img');
     let p1 = infoCnt.querySelector('#p1');
     let mapElement = infoCnt.querySelector('map[name="image-map"]');
@@ -181,14 +201,13 @@ function selected(id, name) {
     }
 
     setTimeout(() => {
-        if (sounds[id]) sounds[id].play();
+        if (typeof sounds !== 'undefined' && sounds[id]) sounds[id].play();
     }, 200);
 
-    $(document).ready(function () {
+    if ($.fn.rwdImageMaps) {
         $('img[usemap]').rwdImageMaps();
-    });
+    }
 }
-
 
 function triggerLocationClick(loc, pinElement, markerContainerElement) {
     if (markerContainerElement) markerContainerElement.classList.remove('hover');
@@ -204,21 +223,20 @@ function triggerLocationClick(loc, pinElement, markerContainerElement) {
 
         current = loc.id;
 
-        updateWindowPosition(1600, -120, true);
+        updateWindowPosition(getHiddenX(), -120, true);
 
         setTimeout(() => {
             selected(loc.id, loc.name);
-            updateWindowPosition(1100, -120, true);
+            updateWindowPosition(getVisibleX(), -120, true);
         }, 500);
 
         handleMarkerClick(loc);
     } else {
-
         document.querySelectorAll('.custom-marker.active').forEach(el => el.classList.remove('active'));
         document.querySelectorAll("#icons-container img").forEach(e => e.classList.remove("active"));
 
         current = null;
-        updateWindowPosition();
+        updateWindowPosition(getHiddenX(), -120, true);
 
         if (previousCenter && previousZoom) {
             map.flyTo({
@@ -235,9 +253,9 @@ function triggerLocationClick(loc, pinElement, markerContainerElement) {
 }
 
 function closeClick(icon) {
-    const clases = icon.classList;
-    const id = clases[0];
-    const name = clases[1];
+    const classes = icon.classList;
+    const id = classes[0];
+    const name = classes[1];
     const markerContainer = document.querySelector(`.pin-name.${id}`);
     const pin = document.querySelector(`.custom-marker.${id}`);
     const loc = { id: id, name: name };
@@ -246,70 +264,113 @@ function closeClick(icon) {
 }
 
 function externalClick(icon) {
-    const clases = icon.classList;
-    const id = clases[0];
-    const link = monumentsData[id].link;
-    window.open(link, '_blank');
+    const classes = icon.classList;
+    const id = classes[0];
+    if (monumentsData[id] && monumentsData[id].link) {
+        window.open(monumentsData[id].link, '_blank');
+    }
 }
 
-locations.forEach(loc => {
-    let x = loc.id;
-    const pin = document.createElement("div");
-    pin.classList.add("custom-marker", loc.id);
-    pin.style.cursor = "pointer";
-    pin.innerHTML = `
-        <svg viewBox="0 -960 960 960" style="width: 100%; height: 100%; display: block;">
-            <path fill="#F2CA50" d="M536.5-503.5Q560-527 560-560t-23.5-56.5Q513-640 480-640t-56.5 23.5Q400-593 400-560t23.5 56.5Q447-480 480-480t56.5-23.5ZM480-80Q319-217 239.5-334.5T160-552q0-150 96.5-239T480-880q127 0 223.5 89T800-552q0 100-79.5 217.5T480-80Z"/>
-        </svg>`;
+// إضافة العلامات (Markers)
+if (typeof locations !== 'undefined') {
+    locations.forEach(loc => {
+        const pin = document.createElement("div");
+        pin.classList.add("custom-marker", loc.id);
+        pin.style.cursor = "pointer";
+        pin.innerHTML = `
+            <svg viewBox="0 -960 960 960" style="width: 100%; height: 100%; display: block;">
+                <path fill="#F2CA50" d="M536.5-503.5Q560-527 560-560t-23.5-56.5Q513-640 480-640t-56.5 23.5Q400-593 400-560t23.5 56.5Q447-480 480-480t56.5-23.5ZM480-80Q319-217 239.5-334.5T160-552q0-150 96.5-239T480-880q127 0 223.5 89T800-552q0 100-79.5 217.5T480-80Z"/>
+            </svg>`;
 
-    const markerContainer = document.createElement('div');
-    markerContainer.classList.add('pin-name', x);
+        const markerContainer = document.createElement('div');
+        markerContainer.classList.add('pin-name', loc.id);
 
-    const nameElement = document.createElement('p');
-    nameElement.innerText = loc.name;
+        const nameElement = document.createElement('p');
+        nameElement.innerText = loc.name;
 
-    markerContainer.appendChild(nameElement);
-    markerContainer.insertAdjacentHTML("beforeend", `<div class="pin-arrow"></div>`);
+        markerContainer.appendChild(nameElement);
+        markerContainer.insertAdjacentHTML("beforeend", `<div class="pin-arrow"></div>`);
 
-    pin.appendChild(markerContainer);
+        pin.appendChild(markerContainer);
 
-    const marker = new maplibregl.Marker({
-        element: pin,
-        anchor: 'bottom'
-    })
-        .setLngLat(loc.coords)
-        .addTo(map);
+        new maplibregl.Marker({
+            element: pin,
+            anchor: 'bottom'
+        })
+            .setLngLat(loc.coords)
+            .addTo(map);
 
-    pin.addEventListener('click', (e) => {
-        e.stopPropagation();
-        triggerLocationClick(loc, pin, markerContainer);
+        pin.addEventListener('click', (e) => {
+            e.stopPropagation();
+            triggerLocationClick(loc, pin, markerContainer);
+        });
+
+        pin.addEventListener("mouseenter", () => markerContainer.classList.add('hover'));
+        pin.addEventListener("mouseleave", () => markerContainer.classList.remove('hover'));
     });
+}
 
-    pin.addEventListener("mouseenter", () => {
-        markerContainer.classList.add('hover');
-    });
+// دالة تحويل إحداثيات السحب مع مراعاة وضع الـ Rotate
+function getRotatedCoords(e) {
+    const touch = e.touches && e.touches.length > 0 ? e.touches[0] : null;
+    const rawX = touch ? touch.clientX : e.clientX;
+    const rawY = touch ? touch.clientY : e.clientY;
 
-    pin.addEventListener("mouseleave", () => {
-        markerContainer.classList.remove('hover');
-    });
+    if (isRotatedMode()) {
+        return {
+            clientX: -rawY,
+            clientY: rawX
+        };
+    }
 
-    console.log(loc);
-});
+    return {
+        clientX: rawX,
+        clientY: rawY
+    };
+}
 
-if (myWindow) {
-    myWindow.addEventListener("mousedown", (e) => {
-        if (e.target.closest('button, input, select, textarea')) return;
+function startDrag(e) {
+    if (e.target.closest('button, input, select, textarea, svg, a')) return;
 
+    if (e.type === 'mousedown') {
+        if (e.button !== 0) return; // كليك شمال فقط
         e.preventDefault();
-        isDragging = true;
-        myWindow.classList.add("dragging");
+    }
 
-        myWindow.style.transition = "none";
-        if (scrollBar) scrollBar.style.transition = "none";
+    isDragging = true;
+    myWindow.classList.add("dragging");
+    myWindow.style.transition = "none";
+    if (scrollBar) scrollBar.style.transition = "none";
 
-        startX = e.clientX - currentX;
-        startY = e.clientY - currentY;
-    });
+    const coords = getRotatedCoords(e);
+    startX = coords.clientX - currentX;
+    startY = coords.clientY - currentY;
+}
+
+function moveDrag(e) {
+    if (!isDragging) return;
+
+    if (e.type === 'mousemove') {
+        e.preventDefault();
+    }
+
+    const coords = getRotatedCoords(e);
+    const newX = coords.clientX - startX;
+    const newY = coords.clientY - startY;
+
+    updateWindowPosition(newX, newY, false);
+}
+
+function stopDrag() {
+    if (!isDragging) return;
+    isDragging = false;
+    if (myWindow) myWindow.classList.remove("dragging");
+}
+
+// ربط أحداث السحب للبطاقة
+if (myWindow) {
+    myWindow.addEventListener("mousedown", startDrag);
+    myWindow.addEventListener("touchstart", startDrag, { passive: true });
 
     myWindow.addEventListener("wheel", (e) => {
         if (isDragging) return;
@@ -330,62 +391,38 @@ if (myWindow) {
     }, { passive: false });
 }
 
-document.addEventListener("mousemove", (e) => {
-    if (!isDragging) return;
+// الاستماع على مستوى الشاشة ككل لضمان استمرار السحب وعدم تعليق الماوس
+window.addEventListener("mousemove", moveDrag, { passive: false });
+window.addEventListener("touchmove", moveDrag, { passive: true });
 
-    const newX = e.clientX - startX;
-    const newY = e.clientY - startY;
+window.addEventListener("mouseup", stopDrag);
+window.addEventListener("touchend", stopDrag);
 
-    updateWindowPosition(newX, newY, false);
-});
-
-document.addEventListener("mouseup", () => {
-    if (!isDragging) return;
-    isDragging = false;
-    if (myWindow) myWindow.classList.remove("dragging");
-});
-
-function zoomIn() {
-    let currentZoom = map.getZoom();
-    let targetZoom = Math.min(currentZoom + 0.5, 14);
-
-    if (typeof customZoom !== 'undefined') customZoom = targetZoom;
-
-    map.easeTo({
-        zoom: targetZoom,
-        duration: 300
-    });
+// أزرار التكبير والتصغير
+function zoom(delta) {
+    const targetZoom = Math.max(6, Math.min(map.getZoom() + delta, 14));
+    map.easeTo({ zoom: targetZoom, duration: 300 });
 }
 
-function zoomOut() {
-    let currentZoom = map.getZoom();
-    let targetZoom = Math.max(currentZoom - 0.5, 6);
+function zoomIn() { zoom(0.5); }
+function zoomOut() { zoom(-0.5); }
 
-    if (typeof customZoom !== 'undefined') customZoom = targetZoom;
-
-    map.easeTo({
-        zoom: targetZoom,
-        duration: 300
-    });
-}
-
+// التعامل مع المعاملات من الـ URL عند تحميل الصفحة
 window.addEventListener("DOMContentLoaded", () => {
     const urlParams = new URLSearchParams(window.location.search);
     const markerIdFromUrl = urlParams.get('markerId');
 
-    if (markerIdFromUrl) {
+    if (markerIdFromUrl && typeof locations !== 'undefined') {
         const targetLoc = locations.find(l => l.id === markerIdFromUrl);
 
         if (targetLoc) {
-            const newUrl = window.location.pathname;
-            window.history.replaceState({}, document.title, newUrl);
+            window.history.replaceState({}, document.title, window.location.pathname);
 
             setTimeout(() => {
                 const targetPinElement = document.querySelector(`.custom-marker.${markerIdFromUrl}`);
                 const targetContainerElement = document.querySelector(`.pin-name.${markerIdFromUrl}`);
-
                 triggerLocationClick(targetLoc, targetPinElement, targetContainerElement);
-            }, 200);
+            }, 300);
         }
     }
 });
@@ -396,6 +433,15 @@ function handleOrientationFix() {
     }
 }
 
-window.addEventListener('resize', handleOrientationFix);
+window.addEventListener('resize', () => {
+    handleOrientationFix();
+    if (!current) {
+        currentX = getHiddenX();
+        updateWindowPosition(currentX, currentY, false);
+    }
+});
 window.addEventListener('orientationchange', handleOrientationFix);
-// map.on('click', (e) => { const features = map.queryRenderedFeatures(e.point); if (features.length > 0) { console.log("اسم الطبقة المسؤولية:", features[0].layer.id); console.log("الـ source-layer بتاعها:", features[0].layer['source-layer']); } });
+
+function toggleNavBar() {
+    document.getElementById('nav-bar').classList.toggle('expanded');
+}
