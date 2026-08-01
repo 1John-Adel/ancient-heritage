@@ -94,7 +94,7 @@ if (typeof maplibregl !== 'undefined') {
     const map = new maplibregl.Map({
         container: 'map',
         style: '../js/mystyle.json',
-        center: isMobile ? [31.2357, 31.5] : [31.2357, 30.1],
+        center: isMobile ? [31.2357, 35.5] : [31.2357, 30.1],
         zoom: isMobile ? 5.2 : 6,
         maxZoom: 15,
         maxBounds: egyptBounds,
