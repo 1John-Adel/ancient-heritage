@@ -30,14 +30,14 @@ main {
         display: flex;
         align-items: center;
         justify-content: center;
-        width: 50px;
-        height: 50px;
+        width: 45px;
+        height: 45px;
         background: #12141199;
         color: #f2ca50;
-        font-size: 40px;
+        font-size: 30px;
         cursor: pointer;
         border: 1px solid #f2ca5033;
-        border-radius: 15px;
+        border-radius: 14px;
         transition: 0.5s;
     }
 
@@ -52,13 +52,11 @@ main {
     }
 }
 
-
 .pin-name {
     width: fit-content;
     pointer-events: none;
     background: #121411e6;
     border-radius: 8px;
-    border: none;
     color: #F2CA50;
     white-space: nowrap;
     user-select: none;
@@ -100,7 +98,6 @@ main {
         font-size: 12px;
     }
 }
-
 
 .custom-marker {
     display: flex;
@@ -146,7 +143,6 @@ main {
     }
 }
 
-
 #information-container {
     position: absolute;
     top: 140px;
@@ -165,6 +161,16 @@ main {
     overflow: hidden;
     cursor: grab;
     transform: translate(1600px, 0px);
+
+    #drag-handle {
+        display: none;
+        width: 50px;
+        height: 3px;
+        background-color: #ffffff4d;
+        border-radius: 10px;
+        margin: 0 auto 12px auto;
+        cursor: grab;
+    }
 
     #info-top {
         display: flex;
@@ -274,7 +280,6 @@ main {
                 font-size: 17px;
             }
         }
-
     }
 
     #info-p {
@@ -315,32 +320,7 @@ main {
     border-radius: 10px;
 }
 
-@media screen and (max-width: 768px) and (orientation: portrait) {
-    html, body {
-        width: 100%;
-        height: 100%;
-        margin: 0;
-        left: -20vw;
-        overflow: hidden;
-    }
-
-    body {
-        margin: 0;
-        overflow: hidden;
-    }
-
-    #app {
-        position: fixed;
-        top: 0;
-        left: 0;
-
-        width: 100vh;
-        height: 100vw;
-
-        transform-origin: top left;
-        transform: rotate(90deg) translateY(-100%);
-    }
-
+@media screen and (max-width: 768px) {
     #nav-bar {
         nav {
             position: fixed;
@@ -366,12 +346,12 @@ main {
 
     #nav-bar.expanded {
         nav {
-            left: auto;
-            width: 85vh;
+            padding: 15px;
+            left: 15px;
+            width: calc(100vw - 30px);
             height: fit-content;
             flex-wrap: wrap;
             border-radius: 20px;
-            padding: 15px 20px;
         }
 
         nav>*:not(#nav-toggle-btn) {
@@ -379,7 +359,6 @@ main {
             pointer-events: auto;
             transition: opacity 0.3s ease 0.2s;
         }
-
 
         #nav-toggle-btn {
             svg {
@@ -411,5 +390,79 @@ main {
     #nav-links {
         display: flex;
         gap: 15px;
+    }
+
+    #information-container {
+        padding: 15px;
+        border-radius: 15px;
+
+        #drag-handle {
+            display: block;
+        }
+
+        #info-top {
+            margin-bottom: 5px;
+
+            p {
+                font-size: 10px;
+            }
+
+            section {
+                gap: 6px;
+                transform: translateX(0px) translateY(-5px);
+
+                svg {
+                    width: 18px;
+                    height: 18px;
+                }
+            }
+        }
+
+        #img-sec {
+            margin-top: 10px;
+
+            img {
+                width: 240px;
+            }
+
+            span {
+                top: 4px;
+                right: 4px;
+                padding: 2px 6px;
+                font-size: 9px;
+                gap: 2px;
+
+                svg {
+                    width: 12px;
+                }
+            }
+        }
+
+        #p1 {
+            width: 240px;
+            font-size: 22px;
+        }
+
+        #selected-info {
+            width: 240px;
+
+            section {
+                padding-top: 10px;
+
+                label {
+                    font-size: 11px;
+                }
+
+                p {
+                    font-size: 14px;
+                }
+            }
+        }
+
+        #info-p {
+            width: 250px;
+            font-size: 13px;
+            padding-top: 15px;
+        }
     }
 }

@@ -60,9 +60,13 @@ function updateWindowPosition(X = getHiddenX(), Y = -120, triggerTransition = tr
         const cardHeight = myWindow.offsetHeight;
         const maxScroll = -(cardHeight - frameHeight);
 
-        scrollBar.style.display = cardHeight > frameHeight ? "block" : "none";
+        if (isRotatedMode()) {
+            scrollBar.style.display = "none";
+        } else {
+            scrollBar.style.display = cardHeight > frameHeight ? "block" : "none";
+        }
 
-        if (cardHeight > frameHeight) {
+        if (cardHeight > frameHeight && !isRotatedMode()) {
             const scrollRatio = scrollY / maxScroll;
             const availableSpace = 120 - 40;
             const thumbTop = scrollRatio * availableSpace;
@@ -129,13 +133,6 @@ document.getElementById('map').addEventListener('wheel', (e) => {
 
     let dx = e.deltaX;
     let dy = e.deltaY;
-
-    if (isRotatedMode()) {
-        const rotatedDx = dy;
-        const rotatedDy = -dx;
-        dx = rotatedDx;
-        dy = rotatedDy;
-    }
 
     map.jumpTo({
         center: [
@@ -311,13 +308,6 @@ function getRotatedCoords(e) {
     const rawX = touch ? touch.clientX : e.clientX;
     const rawY = touch ? touch.clientY : e.clientY;
 
-    if (isRotatedMode()) {
-        return {
-            clientX: rawY,
-            clientY: rawX
-        };
-    }
-
     return {
         clientX: rawX,
         clientY: rawY
@@ -356,13 +346,6 @@ function moveDrag(e) {
     let finalX = newX;
     let finalY = newY;
 
-    if (isRotatedMode()) {
-        const rotatedDx = newY;
-        const rotatedDy = newX;
-        finalX = rotatedDx;
-        finalY = rotatedDy;
-    }
-
     updateWindowPosition(finalX, finalY, false);
 }
 
@@ -378,6 +361,7 @@ if (myWindow) {
 
     myWindow.addEventListener("wheel", (e) => {
         if (isDragging) return;
+        if (isDragging || isRotatedMode()) return;
 
         e.preventDefault();
         scrollY -= e.deltaY;

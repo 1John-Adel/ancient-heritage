@@ -129,6 +129,9 @@ body::before {
 }
 
 #nav-text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     font-family: 'Playfair Display';
     font-style: normal;
     font-size: 28px;
@@ -334,7 +337,7 @@ body::before {
 
         #sign-btn {
             font-size: 10px;
-            padding: 5px 12px;
+            padding: 5px 7px;
             border-radius: 20px;
         }
 
@@ -346,9 +349,7 @@ body::before {
     main {
         margin-top: 175px;
     }
-}
 
-@media (max-width: 768px) {
     #footer {
         flex-direction: column;
         gap: 20px;
