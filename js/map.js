@@ -11,12 +11,10 @@ let isDragging = false;
 let startX = 0;
 let startY = 0;
 
-// الحصول على موضع الإخفاء الديناميكي خارج الشاشة
 function getHiddenX() {
     return window.innerWidth + 100;
 }
 
-// الحصول على موضع الظهور الديناميكي داخل الشاشة
 function getVisibleX() {
     const cardWidth = myWindow ? myWindow.offsetWidth : 390;
     return Math.max(20, window.innerWidth - cardWidth - 50);
@@ -63,6 +61,7 @@ function updateWindowPosition(X = getHiddenX(), Y = -120, triggerTransition = tr
         const maxScroll = -(cardHeight - frameHeight);
 
         scrollBar.style.display = cardHeight > frameHeight ? "block" : "none";
+
         if (cardHeight > frameHeight) {
             const scrollRatio = scrollY / maxScroll;
             const availableSpace = 120 - 40;
@@ -74,7 +73,6 @@ function updateWindowPosition(X = getHiddenX(), Y = -120, triggerTransition = tr
     return { targetX, targetY };
 }
 
-// تهيئة MapLibre GL
 maplibregl.setRTLTextPlugin(
     'https://unpkg.com/@mapbox/mapbox-gl-rtl-text@0.2.3/mapbox-gl-rtl-text.js',
     lazyLoadError => { if (lazyLoadError) console.error(lazyLoadError); },
@@ -111,7 +109,6 @@ function isRotatedMode() {
     return window.matchMedia("(max-width: 768px) and (orientation: portrait)").matches;
 }
 
-// التحكم في الزوم والتحريك بعجلة الماوس
 document.getElementById('map').addEventListener('wheel', (e) => {
     e.preventDefault();
 
@@ -236,7 +233,6 @@ function triggerLocationClick(loc, pinElement, markerContainerElement) {
         document.querySelectorAll("#icons-container img").forEach(e => e.classList.remove("active"));
 
         current = null;
-        updateWindowPosition(getHiddenX(), -120, true);
 
         if (previousCenter && previousZoom) {
             map.flyTo({
@@ -259,6 +255,7 @@ function closeClick(icon) {
     const markerContainer = document.querySelector(`.pin-name.${id}`);
     const pin = document.querySelector(`.custom-marker.${id}`);
     const loc = { id: id, name: name };
+
     document.getElementById('close').removeAttribute('class');
     triggerLocationClick(loc, pin, markerContainer);
 }
@@ -271,7 +268,6 @@ function externalClick(icon) {
     }
 }
 
-// إضافة العلامات (Markers)
 if (typeof locations !== 'undefined') {
     locations.forEach(loc => {
         const pin = document.createElement("div");
@@ -310,7 +306,6 @@ if (typeof locations !== 'undefined') {
     });
 }
 
-// دالة تحويل إحداثيات السحب مع مراعاة وضع الـ Rotate
 function getRotatedCoords(e) {
     const touch = e.touches && e.touches.length > 0 ? e.touches[0] : null;
     const rawX = touch ? touch.clientX : e.clientX;
@@ -318,7 +313,7 @@ function getRotatedCoords(e) {
 
     if (isRotatedMode()) {
         return {
-            clientX: -rawY,
+            clientX: rawY,
             clientY: rawX
         };
     }
@@ -333,7 +328,7 @@ function startDrag(e) {
     if (e.target.closest('button, input, select, textarea, svg, a')) return;
 
     if (e.type === 'mousedown') {
-        if (e.button !== 0) return; // كليك شمال فقط
+        if (e.button !== 0) return;
         e.preventDefault();
     }
 
@@ -358,7 +353,17 @@ function moveDrag(e) {
     const newX = coords.clientX - startX;
     const newY = coords.clientY - startY;
 
-    updateWindowPosition(newX, newY, false);
+    let finalX = newX;
+    let finalY = newY;
+
+    if (isRotatedMode()) {
+        const rotatedDx = newY;
+        const rotatedDy = newX;
+        finalX = rotatedDx;
+        finalY = rotatedDy;
+    }
+
+    updateWindowPosition(finalX, finalY, false);
 }
 
 function stopDrag() {
@@ -367,7 +372,6 @@ function stopDrag() {
     if (myWindow) myWindow.classList.remove("dragging");
 }
 
-// ربط أحداث السحب للبطاقة
 if (myWindow) {
     myWindow.addEventListener("mousedown", startDrag);
     myWindow.addEventListener("touchstart", startDrag, { passive: true });
@@ -391,14 +395,12 @@ if (myWindow) {
     }, { passive: false });
 }
 
-// الاستماع على مستوى الشاشة ككل لضمان استمرار السحب وعدم تعليق الماوس
 window.addEventListener("mousemove", moveDrag, { passive: false });
 window.addEventListener("touchmove", moveDrag, { passive: true });
 
 window.addEventListener("mouseup", stopDrag);
 window.addEventListener("touchend", stopDrag);
 
-// أزرار التكبير والتصغير
 function zoom(delta) {
     const targetZoom = Math.max(6, Math.min(map.getZoom() + delta, 14));
     map.easeTo({ zoom: targetZoom, duration: 300 });
@@ -407,7 +409,6 @@ function zoom(delta) {
 function zoomIn() { zoom(0.5); }
 function zoomOut() { zoom(-0.5); }
 
-// التعامل مع المعاملات من الـ URL عند تحميل الصفحة
 window.addEventListener("DOMContentLoaded", () => {
     const urlParams = new URLSearchParams(window.location.search);
     const markerIdFromUrl = urlParams.get('markerId');
