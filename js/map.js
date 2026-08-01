@@ -231,9 +231,8 @@ if (typeof maplibregl !== 'undefined') {
         } else {
             document.querySelectorAll('.custom-marker.active').forEach(el => el.classList.remove('active'));
             document.querySelectorAll("#icons-container img").forEach(e => e.classList.remove("active"));
-
             current = null;
-
+            updateWindowPosition(getHiddenX(), -120, true);
             if (previousCenter && previousZoom) {
                 map.flyTo({
                     center: previousCenter,
