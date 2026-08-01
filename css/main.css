@@ -29,7 +29,7 @@
 html, body {
     scroll-behavior: smooth;
     scrollbar-gutter: stable;
-    overflow: hidden;
+    overflow-x: hidden;
     min-height: 100dvh;
 }
 
