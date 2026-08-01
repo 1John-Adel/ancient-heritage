@@ -12,3 +12,14 @@ if (log === "loged") {
 document.querySelectorAll('img').forEach(img => {
     img.ondragstart = () => false;
 });
+
+window.addEventListener('load', () => {
+    const preloader = document.getElementById('preloader');
+
+    if (preloader) {
+        preloader.classList.add('hidden');
+
+        preloader.style.display = 'none';
+    }
+    document.documentElement.classList.remove('no-scroll');
+});
