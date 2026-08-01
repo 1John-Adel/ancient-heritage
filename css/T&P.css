@@ -282,6 +282,14 @@ section {
 }
 
 @media (max-width: 480px) {
+    main {
+        button {
+            padding: 12px 10px;
+            margin: 40px 0;
+            font-size: 75%;
+        }
+    }
+
     #top {
         h1 {
             font-size: 26px;
