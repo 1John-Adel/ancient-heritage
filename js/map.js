@@ -433,6 +433,4 @@ if (typeof maplibregl !== 'undefined') {
     function toggleNavBar() {
         document.getElementById('nav-bar').classList.toggle('expanded');
     }
-    // خزن أوبجيكت الخريطة باسم واضح ومتفرد
-    window.myMap = map;
 }
