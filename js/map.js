@@ -89,11 +89,13 @@ if (typeof maplibregl !== 'undefined') {
         [37.0, 32.5]
     ];
 
+    const isMobile = window.innerWidth <= 768;
+
     const map = new maplibregl.Map({
         container: 'map',
         style: '../js/mystyle.json',
-        center: [31.2357, 30.1],
-        zoom: 6,
+        center: isMobile ? [31.2357, 28.5] : [31.2357, 30.1],
+        zoom: isMobile ? 5.2 : 6,
         maxZoom: 15,
         maxBounds: egyptBounds,
         scrollZoom: false,
