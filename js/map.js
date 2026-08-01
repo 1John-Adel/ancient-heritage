@@ -110,7 +110,7 @@ function getMapPoint(e) {
 }
 
 function isRotatedMode() {
-    return window.matchMedia("(max-width: 768px) and (orientation: portrait)").matches;
+    return window.matchMedia("(max-width: 768px)").matches;
 }
 
 document.getElementById('map').addEventListener('wheel', (e) => {
