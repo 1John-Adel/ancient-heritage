@@ -389,7 +389,7 @@ if (typeof maplibregl !== 'undefined') {
     window.addEventListener("touchend", stopDrag);
 
     function zoom(delta) {
-        const targetZoom = Math.max(6, Math.min(map.getZoom() + delta, 14));
+        const targetZoom = Math.max(isMobile ? 5.2 : 6, Math.min(map.getZoom() + delta, 14));
         map.easeTo({ zoom: targetZoom, duration: 300 });
     }
 
