@@ -397,8 +397,7 @@ main {
     }
 
     #nav-links {
-        display: flex;
-        gap: 15px;
+        gap: 10px;
     }
 
     #information-container {

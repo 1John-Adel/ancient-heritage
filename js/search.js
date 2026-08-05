@@ -109,7 +109,6 @@ for (let i of products.data) {
         heartIcon.classList.add("active");
     }
 
-    // 3. إضافة الـ Listener للأيقونة القلب
     heartIcon.onclick = (e) => {
         let log = localStorage.getItem("log");
 
@@ -126,7 +125,6 @@ for (let i of products.data) {
         }
     }
 
-    // 4. إضافة الـ Listener لأيقونة الأرشيف
     archiveIcon.onclick = (e) => {
         let log = localStorage.getItem("log");
 
@@ -204,19 +202,6 @@ document.querySelectorAll('#type button').forEach(button => {
 });
 
 
-function showMethodActive(value = 'grid') {
-    document.querySelectorAll("#cards-show span").forEach(method => {
-        method.classList.remove("active");
-    });
-    document.getElementById(value).classList.add('active');
-
-    previous(1);
-
-    if (value == 'grid') document.getElementById('scroll-wrapper').classList.remove('list');
-    else document.getElementById('scroll-wrapper').classList.add('list');
-}
-
-
 function searcher() {
     let searchValue = document.querySelector("#search input").value.toUpperCase();
     let cards = document.querySelectorAll(".card:not(.hide)");
@@ -259,7 +244,7 @@ let currentPage = 1;
 
 function getScrollAmount() {
     const container = document.getElementById('scroll-wrapper');
-    return container.clientWidth + 30;
+    return container.clientWidth;
 }
 
 function getTotalPages() {
@@ -358,9 +343,22 @@ function updatePagination() {
 }
 
 window.onload = () => {
+    if (window.innerWidth <= 768){
+        document.querySelectorAll('.card').forEach(card =>{
+            card.classList.add('small')
+        });
+    }
+    else {
+        document.querySelectorAll('.card').forEach(card =>{
+            card.classList.remove('small')
+        });
+    }
+
+    let el = products.data.length / 4;
+    document.getElementById('artifacts-container').style.gridTemplateColumns = `repeat(${el}, 1fr)`;
+
     filterSelection('all', 'museum');
     filterSelection('all');
-    showMethodActive();
     updatePagination();
 
     document.getElementById('pg1').addEventListener('click', () => {
@@ -388,3 +386,12 @@ window.onload = () => {
             next();
     });
 }
+
+const observer = new ResizeObserver(entries => {
+    entries.forEach(e => {
+        document.querySelectorAll('.card').forEach(card => {
+            card.style.width = (e.contentRect.width) / 3 - 20 + 'px';
+        });
+    });
+});
+observer.observe(document.getElementById('cards-sec'));
