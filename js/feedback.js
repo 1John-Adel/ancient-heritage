@@ -72,7 +72,7 @@ function dataForm(event) {
 
       const data = Object.fromEntries(new FormData(form));
 
-      fetch("https://formsubmit.co/ajax/johnadelx15@gmail.com", {
+      fetch("https://formsubmit.co/ajax/johnadel.tech@gmail.com", {
          method: "POST",
          headers: {
             'Content-Type': 'application/json',
